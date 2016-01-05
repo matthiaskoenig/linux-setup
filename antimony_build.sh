@@ -1,16 +1,16 @@
 #!/bin/bash
 ############################################################
-# Build libsbml from latest source
-#   http://svn.code.sf.net/p/sbml/code/trunk
+# Build antimony from latest source
+#   http://svn.code.sf.net/p/antimony/code/
 #
 # Ubuntu
 #
 # @author: Matthias Koenig
-# @date: 2015-12-08
+# @date: 2015-01-05
 ############################################################
 
-SBMLCODE=sbml-code
-LIBSBML=libsbml
+CODE=antimony
+ANTIMONY=antimony
 
 SVN_DIR=$HOME/svn
 TMP_DIR=$HOME/tmp
@@ -23,32 +23,33 @@ fi
 
 # install dependencies
 echo "---------------------------------------"
-echo "install libsbml dependencies"
+echo "install dependencies"
 echo "---------------------------------------"
-sudo apt-get install cmake cmake-gui swig libxml2 libxml2-dev libbz2-dev zlib1g-dev
+sudo apt-get -y install libqt4-core libqt4-dev
 
 echo "--------------------------------------"
 echo "pull libsbml repository"
 echo "--------------------------------------"
-if [ -d "${SVN_DIR}/$SBMLCODE" ]; then
-	cd ${SVN_DIR}/$SBMLCODE
+if [ -d "${SVN_DIR}/$CODE" ]; then
+	cd ${SVN_DIR}/$CODE
 	svn update
 else
 	cd $SVN_DIR
-	svn checkout http://svn.code.sf.net/p/sbml/code/trunk $SBMLCODE
-	cd ${SVN_DIR}/$SBMLCODE
+	svn checkout http://svn.code.sf.net/p/antimony/code/ $CODE
+	cd ${SVN_DIR}/$CODE
 fi
 
 echo "--------------------------------------"
-echo "build libsbml"
+echo "build antimony"
 echo "--------------------------------------"
-LIBSBML_BUILD=$TMP_DIR/libsbml_build
-rm -rf $LIBSBML_BUILD
-mkdir $LIBSBML_BUILD
+ANTIMONY_BUILD=$TMP_DIR/antimony_build
+rm -rf $ANTIMONY_BUILD
+mkdir $ANTIMONY_BUILD
 
 # here are the cmake files
-cd $LIBSBML_BUILD
-cmake -DENABLE_COMP=ON -DENABLE_FBC=ON -DENABLE_LAYOUT=ON -DENABLE_QUAL=ON -DWITH_EXAMPLES=ON -DWITH_PYTHON=ON -DWITH_R=ON ${SVN_DIR}/$SBMLCODE/libsbml
+cd $ANTIMONY_BUILD
+cmake -DENABLE_COMP=ON -DENABLE_FBC=ON -DENABLE_LAYOUT=ON -DENABLE_QUAL=ON -DWITH_EXAMPLES=ON -DWITH_PYTHON=ON -DWITH_R=ON ${SVN_DIR}/$CODE/libsbml
+
 make
 sudo make install
 

@@ -81,6 +81,8 @@ java -version
 javac -version
 
 echo "*** Python ***"
+# general python requirements
+# TODO: make sure that the apt-get versions are removed
 sudo apt-get -y install build-essential python-dev python-pip libfreetype6-dev
 sudo -E pip install numpy scipy matplotlib ipython pandas sympy nose jupyter 
 sudo apt-get -y install python-tk
