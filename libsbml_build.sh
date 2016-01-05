@@ -25,7 +25,7 @@ fi
 echo "---------------------------------------"
 echo "install libsbml dependencies"
 echo "---------------------------------------"
-sudo apt-get install cmake cmake-gui swig libxml2 libxml2-dev libbz2-dev zlib1g-dev
+sudo apt-get -y install cmake cmake-gui swig libxml2 libxml2-dev libbz2-dev zlib1g-dev
 
 echo "--------------------------------------"
 echo "pull libsbml repository"
