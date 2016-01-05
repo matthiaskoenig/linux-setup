@@ -3,7 +3,8 @@
 # Build libsbml from latest source
 #   http://svn.code.sf.net/p/sbml/code/trunk
 #
-# Ubuntu
+# Usage: 
+# 	./libsbml_build.sh 2>&1 | tee ./libsbml_build.log
 #
 # @author: Matthias Koenig
 # @date: 2015-12-08

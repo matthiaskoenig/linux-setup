@@ -1,14 +1,16 @@
 #!/bin/bash
 ############################################################
 # Build roadrunner directly from the release files on
-# github https://github.com/sys-bio/roadrunner/releases
+# github https://github.com/sys-bio/roadrunner
 #
-# Ubuntu
+# Usage: 
+# 	./roadrunner_build.sh 2>&1 | tee ./roadrunner_build.log
+#
 # To select a branch/tag/commit to build from change the
 # checkout command for roadrunner.
 #
 # @author: Matthias Koenig
-# @date: 2015-12-08
+# @date: 2016-01-05
 ############################################################
 
 echo "Make directories for roadrunner installation"
@@ -26,7 +28,7 @@ fi
 
 # install dependencies
 echo "install roadrunner dependencies"
-sudo apt-get install llvm llvm-dev git libxml2-dev
+sudo apt-get -E install llvm llvm-dev git libxml2-dev
 sudo -E pip install numpy --upgrade
 sudo -E pip install scipy --upgrade
 

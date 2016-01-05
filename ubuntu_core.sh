@@ -1,13 +1,14 @@
 #!/bin/bash
 ############################################################
 # Core Ubuntu setup after installation
-# Install via 
+# Usage
 # 	sudo apt-get install git
 # 	GIT_DIR=$HOME/git
 # 	mkdir $GIT_DIR
 # 	cd $GIT_DIR
+#
 # 	git clone https://github.com/matthiaskoenig/linux-setup
-#	./ubuntu_core.sh
+#	./ubuntu_core.sh 2>&1 | tee ./ubuntu_core.log
 #
 # @author: Matthias Koenig
 # @date: 2016-01-05
