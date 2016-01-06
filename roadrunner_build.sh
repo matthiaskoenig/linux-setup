@@ -28,7 +28,7 @@ fi
 
 # install dependencies
 echo "install roadrunner dependencies"
-sudo apt-get -E install llvm llvm-dev git libxml2-dev
+sudo apt-get -y install llvm llvm-dev git libxml2-dev
 sudo -E pip install numpy --upgrade
 sudo -E pip install scipy --upgrade
 
