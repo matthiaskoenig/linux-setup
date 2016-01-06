@@ -64,7 +64,7 @@ cd ${GIT_DIR}/$ROADRUNNER
 # git checkout tags/1.4.1
 git checkout develop
 
-read -rsp $'Press any key to continue...\n' -n1 key
+# read -rsp $'Press any key to continue...\n' -n1 key
 
 # create build folders
 echo "--------------------------------------"
@@ -81,7 +81,7 @@ mkdir $ROADRUNNER_BUILD_THIRDPARTY
 cd $ROADRUNNER_BUILD_THIRDPARTY
 cmake -DCMAKE_INSTALL_PREFIX=$ROADRUNNER_INSTALL ${GIT_DIR}/$ROADRUNNER_DEPS && make -j4 install
 
-read -rsp $'Press any key to continue...\n' -n1 key
+# read -rsp $'Press any key to continue...\n' -n1 key
 
 # build roadrunner
 echo "--------------------------------------"
@@ -94,6 +94,9 @@ cmake -DCMAKE_INSTALL_PREFIX=$ROADRUNNER_INSTALL -DTHIRD_PARTY_INSTALL_FOLDER=$R
 make
 make install
 
+echo "--------------------------------------"
+echo "roadrunner python bindings"
+echo "--------------------------------------"
 # clean old roadrunner installs
 sudo rm -r /usr/local/lib/python2.7/dist-packages/roadrunner
 sudo rm /usr/local/lib/python2.7/dist-packages/*roadrunner*
@@ -102,6 +105,9 @@ sudo rm /usr/local/lib/python2.7/dist-packages/*roadrunner*
 cd $ROADRUNNER_INSTALL
 sudo python setup.py install
 
+echo "--------------------------------------"
+echo "roadrunner tests"
+echo "--------------------------------------"
 # perform the tests
 cd $MULTISCALE_GALACTOSE
-./roadrunner_build.py
+./roadrunner_test.py
