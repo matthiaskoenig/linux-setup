@@ -7,7 +7,7 @@
 # 	./libsbml.sh 2>&1 | tee ./logs/libsbml.log
 #
 # @author: Matthias Koenig
-# @date: 2015-12-08
+# @date: 2016-01-07
 ############################################################
 
 SBMLCODE=sbml-code
