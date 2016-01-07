@@ -1,20 +1,21 @@
 #!/bin/bash
 ############################################################
-# Build libsbml from latest source
-#   http://svn.code.sf.net/p/sbml/code/trunk
+# Build libsedml from latest source
+#   https://github.com/NuML/NuML.git
+#	https://github.com/fbergmann/libSEDML.git
 #
 # Usage: 
-# 	./libsbml.sh 2>&1 | tee ./logs/libsbml.log
+# 	./libsedml.sh 2>&1 | tee ./logs/libsedml.log
 #
 # @author: Matthias Koenig
 # @date: 2016-01-07
 ############################################################
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-SBMLCODE=sbml-code
-LIBSBML=libsbml
+NUMLCODE=numl-code
+SEDMLCODE=sedml-code
 
-SVN_DIR=$HOME/svn
+GIT_DIR=$HOME/git
 TMP_DIR=$HOME/tmp
 if ! [ -d "$SVN_DIR" ]; then
 	mkdir $SVN_DIR
@@ -23,23 +24,25 @@ if ! [ -d "$TMP_DIR" ]; then
 	mkdir $TMP_DIR
 fi
 
-# install dependencies
 echo "---------------------------------------"
-echo "install libsbml dependencies"
+echo "install libsedml dependencies"
 echo "---------------------------------------"
 sudo apt-get -y install cmake cmake-gui swig libxml2 libxml2-dev libbz2-dev zlib1g-dev
 
 echo "--------------------------------------"
-echo "pull libsbml repository"
+echo "pull libNUML repository"
 echo "--------------------------------------"
-if [ -d "${SVN_DIR}/$SBMLCODE" ]; then
-	cd ${SVN_DIR}/$SBMLCODE
-	svn update
+if [ -d "${GIT_DIR}/$NUMLCODE" ]; then
+	cd ${GIT_DIR}/$NUMLCODE
+	git pull
 else
-	cd $SVN_DIR
-	svn checkout http://svn.code.sf.net/p/sbml/code/trunk $SBMLCODE
-	cd ${SVN_DIR}/$SBMLCODE
+	cd $GIT_DIR
+	git clone https://github.com/NuML/NuML.git $NUMLCODE
+	cd $GIT_DIR/$NUMLCODE
 fi
+
+exit
+
 
 echo "--------------------------------------"
 echo "build libsbml"
@@ -78,7 +81,9 @@ sudo R CMD INSTALL libSBML_*_R_x86_64-pc-linux-gnu.tar.gz
 
 # python bindings
 echo "Add to path: /usr/local/lib/python2.7/site-packages/libsbml"
-cd $DIR
+echo "export PYTHONPATH=${PYTHONPATH}:/usr/local/lib/python2.7/site-packages/libsbml"
+
 ./libsbml_test.py
+
 
 

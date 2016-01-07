@@ -65,7 +65,7 @@ sudo make install
 echo "--------------------------------------"
 echo "test installation"
 echo "--------------------------------------"
-cd DIR
+cd $DIR
 ./antimony_test.py
 pip list | grep antimony
 
