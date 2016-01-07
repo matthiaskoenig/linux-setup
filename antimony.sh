@@ -10,6 +10,7 @@
 # @date: 2016-01-06
 ############################################################
 
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 CODE=antimony
 ANTIMONY=antimony
 
@@ -54,11 +55,17 @@ mkdir $ANTIMONY_BUILD
 # CMAKE_CXX_FLAGS = -fPIC
 cd $ANTIMONY_BUILD
 cmake -DWITH_CELLML=OFF -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
-
 make
 
 echo "--------------------------------------"
 echo "install antimony"
 echo "--------------------------------------"
 sudo make install
+
+echo "--------------------------------------"
+echo "test installation"
+echo "--------------------------------------"
+cd DIR
+./antimony_test.py
+pip list | grep antimony
 
