@@ -51,6 +51,19 @@ mkdir $LIBSBML_BUILD
 cd $LIBSBML_BUILD
 cmake -DENABLE_COMP=ON -DENABLE_FBC=ON -DENABLE_LAYOUT=ON -DENABLE_QUAL=ON -DWITH_EXAMPLES=ON -DWITH_PYTHON=ON -DWITH_R=ON ${SVN_DIR}/$SBMLCODE/libsbml
 make
+
+echo "--------------------------------------"
+echo "install libsbml"
+echo "--------------------------------------"
+# remove old files
+sudo rm -rf /usr/local/share/libsbml
+sudo rm /usr/local/lib/pkgconfig/libsbml.pc
+sudo rm -rf /usr/local/include/sbml/
+sudo rm -rf /usr/local/lib/libsbml*
+sudo rm /usr/local/lib/python2.7/site-packages/libsbml.pth
+sudo rm -rf /usr/local/lib/python2.7/site-packages/libsbml
+
+# installation
 sudo make install
 
 echo "--------------------------------------"

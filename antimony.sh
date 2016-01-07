@@ -43,9 +43,11 @@ echo "--------------------------------------"
 echo "build antimony"
 echo "--------------------------------------"
 ANTIMONY_BUILD=$TMP_DIR/antimony_build
-rm -rf $ANTIMONY_BUILD
-mkdir $ANTIMONY_BUILD
 echo "Build directory:" $ANTIMONY_BUILD
+if [ -d "$ANTIMONY_BUILD" ]; then
+	sudo rm -rf $ANTIMONY_BUILD
+fi
+mkdir $ANTIMONY_BUILD
 
 # cmake build
 # if build with -fPIC is necessary, toggle advanced in cmake-gui and set
