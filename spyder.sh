@@ -2,14 +2,15 @@
 ############################################################
 # Install spyder
 # Usage: 
-# 	./roadrunner_build.sh 2>&1 | tee ./roadrunner_build.log
-#
-# To select a branch/tag/commit to build from change the
-# checkout command for roadrunner.
+# 	./spyder.sh 2>&1 | tee ./logs/spyder.log
 #
 # @author: Matthias Koenig
-# @date: 2016-01-05
+# @date: 2016-01-06
 ############################################################
+
+echo "--------------------------------------"
+echo "spyder installation"
+echo "--------------------------------------"
 sudo apt-get -y remove spyder python-sphinx
 
 sudo -E pip install sphinx pep8 pylint pyflakes rope psutil pysandbox --upgrade

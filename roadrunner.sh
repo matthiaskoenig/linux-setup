@@ -4,15 +4,17 @@
 # github https://github.com/sys-bio/roadrunner
 #
 # Usage: 
-# 	./roadrunner_build.sh 2>&1 | tee ./roadrunner_build.log
+# 	./roadrunner.sh 2>&1 | tee ./logs/roadrunner.log
 #
 # To select a branch/tag/commit to build from change the
 # checkout command for roadrunner.
 #
 # @author: Matthias Koenig
-# @date: 2016-01-05
+# @date: 2016-01-06
 ############################################################
-
+echo "--------------------------------------"
+echo "roadrunner installation"
+echo "--------------------------------------"
 echo "Make directories for roadrunner installation"
 ROADRUNNER=roadrunner
 ROADRUNNER_DEPS=roadrunner-deps
@@ -108,6 +110,7 @@ sudo python setup.py install
 echo "--------------------------------------"
 echo "roadrunner tests"
 echo "--------------------------------------"
-# perform the tests
-cd $MULTISCALE_GALACTOSE
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+echo $DIR
+cd $DIR
 ./roadrunner_test.py

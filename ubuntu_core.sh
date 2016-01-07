@@ -8,10 +8,10 @@
 # 	cd $GIT_DIR
 #
 # 	git clone https://github.com/matthiaskoenig/linux-setup
-#	./ubuntu_core.sh 2>&1 | tee ./ubuntu_core.log
+#	./ubuntu_core.sh 2>&1 | tee ./logs/ubuntu_core.log
 #
 # @author: Matthias Koenig
-# @date: 2016-01-05
+# @date: 2016-01-06
 #
 # Issues
 # - how to sudo with password?
@@ -85,6 +85,6 @@ echo "*** Python ***"
 # general python requirements
 # TODO: make sure that the apt-get versions are removed
 sudo apt-get -y install build-essential python-dev python-pip libfreetype6-dev
-sudo -E pip install numpy scipy matplotlib ipython pandas sympy nose jupyter 
+sudo -E pip install numpy scipy matplotlib ipython pandas sympy nose jupyter --upgrade
 sudo apt-get -y install python-tk
 
