@@ -79,4 +79,7 @@ sudo R CMD INSTALL libSBML_*_R_x86_64-pc-linux-gnu.tar.gz
 echo "Add to path: /usr/local/lib/python2.7/site-packages/libsbml"
 echo "export PYTHONPATH=${PYTHONPATH}:/usr/local/lib/python2.7/site-packages/libsbml"
 
+./libsbml_test.py
+
+
 
