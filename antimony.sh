@@ -56,5 +56,9 @@ cd $ANTIMONY_BUILD
 cmake -DWITH_CELLML=OFF -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
 
 make
+
+echo "--------------------------------------"
+echo "install antimony"
+echo "--------------------------------------"
 sudo make install
 
