@@ -32,8 +32,9 @@ sudo apt-get -y install cmake cmake-gui swig libxml2 libxml2-dev libbz2-dev zlib
 echo "--------------------------------------"
 echo "pull libNUML repository"
 echo "--------------------------------------"
-if [ -d "${GIT_DIR}/$NUMLCODE" ]; then
-	cd ${GIT_DIR}/$NUMLCODE
+echo "$GIT_DIR/$NUMLCODE"
+if [ -d "$GIT_DIR/$NUMLCODE" ]; then
+	cd $GIT_DIR/$NUMLCODE
 	git pull
 else
 	cd $GIT_DIR
@@ -41,20 +42,20 @@ else
 	cd $GIT_DIR/$NUMLCODE
 fi
 
-exit
-
-
 echo "--------------------------------------"
-echo "build libsbml"
+echo "build libNUML"
 echo "--------------------------------------"
-LIBSBML_BUILD=$TMP_DIR/libsbml_build
-if [ -d "$LIBSBML_BUILD" ]; then
-	sudo rm -rf $LIBSBML_BUILD
+NUML_BUILD=$TMP_DIR/numl_build
+if [ -d "$NUML_BUILD" ]; then
+	sudo rm -rf $NUML_BUILD
 fi
-mkdir $LIBSBML_BUILD
+mkdir $NUML_BUILD
 
 # here are the cmake files
-cd $LIBSBML_BUILD
+cd $NUML_BUILD
+
+exit
+
 cmake -DENABLE_COMP=ON -DENABLE_FBC=ON -DENABLE_LAYOUT=ON -DENABLE_QUAL=ON -DWITH_EXAMPLES=ON -DWITH_PYTHON=ON -DWITH_R=ON ${SVN_DIR}/$SBMLCODE/libsbml
 make
 
