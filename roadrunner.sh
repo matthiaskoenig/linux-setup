@@ -19,6 +19,7 @@ echo "Make directories for roadrunner installation"
 ROADRUNNER=roadrunner
 ROADRUNNER_DEPS=roadrunner-deps
 
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 GIT_DIR=$HOME/git 
 TMP_DIR=$HOME/tmp
 if ! [ -d "$GIT_DIR" ]; then
@@ -110,7 +111,5 @@ sudo python setup.py install
 echo "--------------------------------------"
 echo "roadrunner tests"
 echo "--------------------------------------"
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-echo $DIR
 cd $DIR
 ./roadrunner_test.py
