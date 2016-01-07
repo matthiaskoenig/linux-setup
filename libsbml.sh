@@ -44,7 +44,9 @@ echo "--------------------------------------"
 echo "build libsbml"
 echo "--------------------------------------"
 LIBSBML_BUILD=$TMP_DIR/libsbml_build
-rm -rf $LIBSBML_BUILD
+if [ -d "$LIBSBML_BUILD" ]; then
+	sudo rm -rf $LIBSBML_BUILD
+fi
 mkdir $LIBSBML_BUILD
 
 # here are the cmake files
@@ -69,9 +71,12 @@ sudo make install
 echo "--------------------------------------"
 echo "python & R bindings"
 echo "--------------------------------------"
-echo "/usr/local/lib/python2.7/site-packages/libsbml"
-
+# install R bindings
 cd $LIBSBML_BUILD/src/bindings/r/
 sudo R CMD INSTALL libSBML_*_R_x86_64-pc-linux-gnu.tar.gz
+
+# python bindings
+echo "Add to path: /usr/local/lib/python2.7/site-packages/libsbml"
+echo "export PYTHONPATH=${PYTHONPATH}:/usr/local/lib/python2.7/site-packages/libsbml"
 
 
