@@ -81,9 +81,10 @@ sudo update-java-alternatives -s java-8-oracle
 java -version
 javac -version
 
-echo "*** Python ***"
-# general python requirements
-# TODO: make sure that the apt-get versions are removed
+echo "-----------------------------------------"
+echo "Python dependencies"
+echo "-----------------------------------------"
+# general python requirements, installed via pip where possible, otherwise fallback to apt-get
 sudo apt-get -y install build-essential python-dev python-pip libfreetype6-dev
 sudo -E pip install numpy scipy matplotlib ipython pandas sympy nose jupyter --upgrade
 sudo apt-get -y install python-tk
