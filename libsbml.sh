@@ -4,7 +4,7 @@
 #   http://svn.code.sf.net/p/sbml/code/trunk
 #
 # Usage: 
-# 	./libsbml_build.sh 2>&1 | tee ./libsbml_build.log
+# 	./libsbml.sh 2>&1 | tee ./logs/libsbml.log
 #
 # @author: Matthias Koenig
 # @date: 2015-12-08

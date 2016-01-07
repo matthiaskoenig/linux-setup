@@ -39,6 +39,8 @@ else
 	cd ${SVN_DIR}/$CODE
 fi
 
+exit
+
 echo "--------------------------------------"
 echo "build antimony"
 echo "--------------------------------------"
