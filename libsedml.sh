@@ -8,7 +8,7 @@
 # 	./libsedml.sh 2>&1 | tee ./logs/libsedml.log
 #
 # @author: Matthias Koenig
-# @date: 2016-01-07
+# @date: 2016-01-08
 ############################################################
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
@@ -109,16 +109,9 @@ sudo rm /usr/local/lib/python2.7/site-packages/libsedml/libsedml.py
 # installation
 sudo make install
 
-
 echo "--------------------------------------"
 echo "python & R bindings"
 echo "--------------------------------------"
-# install R bindings
-cd $LIBSBML_BUILD/src/bindings/r/
-sudo R CMD INSTALL libSBML_*_R_x86_64-pc-linux-gnu.tar.gz
-
-
-# python bindings
 echo "Add to path: /usr/local/lib/python2.7/site-packages/libnuml"
 echo "Add to path: /usr/local/lib/python2.7/site-packages/libsedml"
 
