@@ -96,5 +96,7 @@ echo "-----------------------------------------"
 # general python requirements, installed via pip where possible, otherwise fallback to apt-get
 sudo apt-get -y install build-essential python-dev python-pip libfreetype6-dev
 sudo -E pip install numpy scipy matplotlib ipython pandas sympy nose jupyter --upgrade
+sudo -E pip install networkx --upgrade
+sudo apt-get -y install pandoc pandoc-citeproc
 sudo apt-get -y install python-tk
 
