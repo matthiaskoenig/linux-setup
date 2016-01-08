@@ -85,10 +85,9 @@ javac -version
 echo "Setting JAVA_HOME: /usr/lib/jvm/java-8-oracle"
 cat > java.sh << EOF0
 #!/bin/bash
-export \JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 EOF0
 sudo mv java.sh /etc/profile.d/
-source /etc/profile.d/java.sh
 
 
 echo "-----------------------------------------"
