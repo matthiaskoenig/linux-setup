@@ -1,8 +1,14 @@
 # Linux setup scripts
 For reproducibility of results and synchronisation of development environments the software/tool stack has to be installed via installation scripts. Currently scripts for the following software is provided.
-
+```
+GIT_DIR=$HOME/git
+mkdir $GIT_DIR
+cd $GIT_DIR
+git clone https://github.com/matthiaskoenig/linux-setup
+cd linux-setup
+```
 **ubuntu_core**  
-Basic library installation after Ubuntu 14.04 LTS installation.
+Get a current Ubuntu distribution with long term support (LTS). Burn the iso or put on an USB stick and make a clean installation. Basic library installation after Ubuntu 14.04 LTS installation.
 ```
 ./ubuntu_core.sh 2>&1 | tee ./logs/ubuntu_core.log
 ```
