@@ -54,24 +54,61 @@ mkdir $NUML_BUILD
 # here are the cmake files
 cd $NUML_BUILD
 
-exit
-
-cmake -DENABLE_COMP=ON -DENABLE_FBC=ON -DENABLE_LAYOUT=ON -DENABLE_QUAL=ON -DWITH_EXAMPLES=ON -DWITH_PYTHON=ON -DWITH_R=ON ${SVN_DIR}/$SBMLCODE/libsbml
+cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON ${GIT_DIR}/$NUMLCODE/libnuml
 make
 
 echo "--------------------------------------"
-echo "install libsbml"
+echo "install libnuml"
 echo "--------------------------------------"
 # remove old files
-sudo rm -rf /usr/local/share/libsbml
-sudo rm /usr/local/lib/pkgconfig/libsbml.pc
-sudo rm -rf /usr/local/include/sbml/
-sudo rm -rf /usr/local/lib/libsbml*
-sudo rm /usr/local/lib/python2.7/site-packages/libsbml.pth
-sudo rm -rf /usr/local/lib/python2.7/site-packages/libsbml
+sudo rm -rf /usr/local/share/libnuml
+sudo rm -rf /usr/local/include/numl/
+sudo rm -rf /usr/local/lib/libnuml*
+# installation
+sudo make install
+
+echo "--------------------------------------"
+echo "pull libSEDML repository"
+echo "--------------------------------------"
+echo "$GIT_DIR/$SEDMLCODE"
+if [ -d "$GIT_DIR/$SEDMLCODE" ]; then
+	cd $GIT_DIR/$SEDMLCODE
+	git pull
+else
+	cd $GIT_DIR
+	git clone https://github.com/fbergmann/libSEDML.git $SEDMLCODE
+	cd $GIT_DIR/$SEDMLCODE
+fi
+
+echo "--------------------------------------"
+echo "build libSEDML"
+echo "--------------------------------------"
+SEDML_BUILD=$TMP_DIR/sedml_build
+if [ -d "$SEDML_BUILD" ]; then
+	sudo rm -rf $SEDML_BUILD
+fi
+mkdir $SEDML_BUILD
+
+# here are the cmake files
+cd $SEDML_BUILD
+cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON ${GIT_DIR}/$SEDMLCODE
+make
+
+echo "--------------------------------------"
+echo "install libSEDML"
+echo "--------------------------------------"
+# remove old files
+sudo rm -rf /usr/local/share/libsedml
+sudo rm -rf /usr/local/include/sedml
+sudo rm -rf /usr/local/lib/libsedml*
+sudo rm /usr/local/share/java/libsedmlj.jar
+sudo rm /usr/local/lib/python2.7/site-packages/libsedml/_libsedml.so
+sudo rm /usr/local/lib/python2.7/site-packages/libsedml.pth
+sudo rm /usr/local/lib/python2.7/site-packages/libsedml/libsedml.py
 
 # installation
 sudo make install
+
 
 echo "--------------------------------------"
 echo "python & R bindings"
@@ -80,11 +117,11 @@ echo "--------------------------------------"
 cd $LIBSBML_BUILD/src/bindings/r/
 sudo R CMD INSTALL libSBML_*_R_x86_64-pc-linux-gnu.tar.gz
 
+
 # python bindings
-echo "Add to path: /usr/local/lib/python2.7/site-packages/libsbml"
-echo "export PYTHONPATH=${PYTHONPATH}:/usr/local/lib/python2.7/site-packages/libsbml"
+echo "Add to path: /usr/local/lib/python2.7/site-packages/libnuml"
+echo "Add to path: /usr/local/lib/python2.7/site-packages/libsedml"
 
-./libsbml_test.py
-
-
+cd $DIR
+./libsedml_test.py
 

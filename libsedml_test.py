@@ -1,15 +1,17 @@
 #!/usr/bin/python
 ############################################################
-# Test libsbml installation/python bindings
+# Test libsedml installation/python bindings
 #
 # Usage: 
-# 	./libsbml_test.sh 2>&1 | tee ./logs/libsbml_test.log
+# 	./libsedml_test.sh
 #
 # @author: Matthias Koenig
 # @date: 2016-01-08
 ############################################################
 from __future__ import print_function, division
-import libsbml
+import libnuml
+import libsedml
 
-print('libsbml', libsbml.getLibSBMLDottedVersion())
+print('libnuml', libnuml.getLibNUMLDottedVersion())
+print ('libsedml', libsedml.getLibSEDMLDottedVersion())
 
