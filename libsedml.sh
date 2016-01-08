@@ -105,15 +105,32 @@ sudo rm /usr/local/share/java/libsedmlj.jar
 sudo rm /usr/local/lib/python2.7/site-packages/libsedml/_libsedml.so
 sudo rm /usr/local/lib/python2.7/site-packages/libsedml.pth
 sudo rm /usr/local/lib/python2.7/site-packages/libsedml/libsedml.py
+sudo rm /etc/profile.d/libnuml.sh
+sudo rm /etc/profile.d/libsedml.sh
 
 # installation
 sudo make install
 
 echo "--------------------------------------"
-echo "python & R bindings"
+echo "python bindings"
 echo "--------------------------------------"
-echo "Add to path: /usr/local/lib/python2.7/site-packages/libnuml"
-echo "Add to path: /usr/local/lib/python2.7/site-packages/libsedml"
+# add a file with the path settings to /etc/profile.d
+echo "Adding to PYTHONPATH: /usr/local/lib/python2.7/site-packages/libnuml"
+cat > libnuml.sh << EOF1
+#!/bin/bash
+PYTHONPATH=\$PYTHONPATH:/usr/local/lib/python2.7/site-packages/libnuml
+EOF1
+sudo mv libnuml.sh /etc/profile.d/
+source /etc/profile.d/libnuml.sh
+
+# add a file with the path settings to /etc/profile.d
+echo "Adding to PYTHONPATH: /usr/local/lib/python2.7/site-packages/libsedml"
+cat > libsedml.sh << EOF2
+#!/bin/bash
+PYTHONPATH=\$PYTHONPATH:/usr/local/lib/python2.7/site-packages/libsedml
+EOF2
+sudo mv libsedml.sh /etc/profile.d/
+source /etc/profile.d/libsedml.sh
 
 cd $DIR
 ./libsedml_test.py

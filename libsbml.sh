@@ -70,15 +70,18 @@ sudo rm -rf /usr/local/lib/python2.7/site-packages/libsbml
 sudo make install
 
 echo "--------------------------------------"
-echo "python & R bindings"
+echo "python bindings"
 echo "--------------------------------------"
-# install R bindings
-cd $LIBSBML_BUILD/src/bindings/r/
-sudo R CMD INSTALL libSBML_*_R_x86_64-pc-linux-gnu.tar.gz
+# add a file with the path settings to /etc/profile.d
+echo "Adding to PYTHONPATH: /usr/local/lib/python2.7/site-packages/libsbml"
+cat > libsbml.sh << EOF0
+#!/bin/bash
+PYTHONPATH=\$PYTHONPATH:/usr/local/lib/python2.7/site-packages/libsbml
+EOF0
+sudo mv libsbml.sh /etc/profile.d/
+source /etc/profile.d/libsbml.sh
 
-# python bindings
-echo "Add to path: /usr/local/lib/python2.7/site-packages/libsbml"
+# test python bindings
 cd $DIR
 ./libsbml_test.py
-
 
