@@ -17,6 +17,11 @@ SBML installation with language bindings for R and python.
 ```
 ./libsbml.sh 2>&1 | tee ./logs/libsbml.log
 ```
+**libsedml**
+SEDML installation with language bindings for R and python
+```
+./libsedml.sh 2>&1 | tee ./logs/libsedml.log
+```
 **roadrunner**  
 libRoadrunner installation for numerical integration of kinetic models.
 ```
@@ -37,8 +42,3 @@ Spyder IDE installation
 
 ## Docker
 Here docker container for the projects are defined reusing the defined scipts from above
-
-
-
-
-
