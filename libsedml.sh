@@ -121,7 +121,7 @@ echo "--------------------------------------"
 echo "Adding to PYTHONPATH: /usr/local/lib/python2.7/site-packages/libnuml"
 cat > libnuml.sh << EOF1
 #!/bin/bash
-PYTHONPATH=\$PYTHONPATH:/usr/local/lib/python2.7/site-packages/libnuml
+export PYTHONPATH=\$PYTHONPATH:/usr/local/lib/python2.7/site-packages/libnuml
 EOF1
 sudo mv libnuml.sh /etc/profile.d/
 source /etc/profile.d/libnuml.sh
@@ -130,7 +130,7 @@ source /etc/profile.d/libnuml.sh
 echo "Adding to PYTHONPATH: /usr/local/lib/python2.7/site-packages/libsedml"
 cat > libsedml.sh << EOF2
 #!/bin/bash
-PYTHONPATH=\$PYTHONPATH:/usr/local/lib/python2.7/site-packages/libsedml
+export PYTHONPATH=\$PYTHONPATH:/usr/local/lib/python2.7/site-packages/libsedml
 EOF2
 sudo mv libsedml.sh /etc/profile.d/
 source /etc/profile.d/libsedml.sh
