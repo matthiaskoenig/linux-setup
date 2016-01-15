@@ -15,26 +15,26 @@ Get a current Ubuntu distribution with long term support (LTS). Burn the iso or 
 **libsbml**  
 SBML installation with language bindings for R and python.
 ```
-./libsbml.sh 2>&1 | tee ./logs/libsbml.log
+./libsbml.sh 2>&1 | tee ./logs/libsbml.log && gedit ./logs/libsbml.log
 ```
 **libsedml**
 SEDML installation with language bindings for R and python
 ```
-./libsedml.sh 2>&1 | tee ./logs/libsedml.log
+./libsedml.sh 2>&1 | tee ./logs/libsedml.log && gedit ./logs/libsedml.log
 ```
 **roadrunner**  
 libRoadrunner installation for numerical integration of kinetic models.
 ```
-./roadrunner.sh 2>&1 | tee ./logs/roadrunner.log
+./roadrunner.sh 2>&1 | tee ./logs/roadrunner.log && gedit ./logs/roadrunner.log
 ```
 **antimony**  
 ```
-./antimony.sh 2>&1 | tee ./logs/antimony.log
+./antimony.sh 2>&1 | tee ./logs/antimony.log && gedit ./logs/antimony.log
 ```
 **spyder**  
 Spyder IDE installation
 ```
-./spyder.sh 2>&1 | tee ./logs/spyder.log
+./spyder.sh 2>&1 | tee ./logs/spyder.log && gedit ./logs/spyder.log
 ```
 
 ### TODO
