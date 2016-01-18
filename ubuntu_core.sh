@@ -99,4 +99,5 @@ sudo -E pip install numpy scipy matplotlib ipython pandas sympy nose jupyter --u
 sudo -E pip install networkx --upgrade
 sudo apt-get -y install pandoc pandoc-citeproc
 sudo apt-get -y install python-tk
+sudo -E pip install seaborn --upgrade
 

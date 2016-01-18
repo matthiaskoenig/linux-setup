@@ -4,7 +4,7 @@
 # github https://github.com/sys-bio/roadrunner
 #
 # Usage: 
-# 	./roadrunner.sh 2>&1 | tee ./logs/roadrunner.log
+# 	./roadrunner.sh 2>&1 | tee ./logs/roadrunner.log && less ./logs/roadrunner.log
 #
 # To select a branch/tag/commit to build from change the
 # checkout command for roadrunner.
