@@ -31,6 +31,17 @@ libRoadrunner installation for numerical integration of kinetic models.
 ```
 ./antimony.sh 2>&1 | tee ./logs/antimony.log
 ```
+
+**tellurium**  
+```
+./tellurium.sh 2>&1 | tee ./logs/tellurium.log
+```
+
+**sbml2matlab**  
+```
+./sbml2matlab.sh 2>&1 | tee ./logs/sbml2matlab.log
+```
+
 **spyder**  
 Spyder IDE installation
 ```

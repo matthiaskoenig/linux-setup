@@ -32,6 +32,7 @@ mkdir $HOME/svn
 echo "*** Update & upgrade system ***"
 sudo apt-get update
 sudo apt-get -y upgrade
+sudo pip install --upgrade setuptools pip.
 
 echo "*** Install codecs ***"
 sudo apt-get -y install ubuntu-restricted-extras libxine1-ffmpeg gxine mencoder mpeg2dec vorbis-tools id3v2 mpg321 mpg123 libflac++6 totem-mozilla icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 libjpeg-progs flac faac faad sox ffmpeg2theora libmpeg2-4 uudeview flac libmpeg3-1 mpeg3-utils mpegdemux liba52-0.7.4-dev 
@@ -98,4 +99,5 @@ sudo -E pip install numpy scipy matplotlib ipython pandas sympy nose jupyter --u
 sudo -E pip install networkx --upgrade
 sudo apt-get -y install pandoc pandoc-citeproc
 sudo apt-get -y install python-tk
+sudo -E pip install seaborn --upgrade
 
