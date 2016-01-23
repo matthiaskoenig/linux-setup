@@ -9,7 +9,10 @@
 # @author: Matthias Koenig
 # @date: 2016-01-19
 ############################################################
-
+date
+echo "--------------------------------------"
+echo "sbml2matlab installation"
+echo "--------------------------------------"
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 CODE=sbml2matlab
 SBML2MATLAB=sbml2matlab

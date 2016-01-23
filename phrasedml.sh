@@ -1,21 +1,21 @@
 #!/bin/bash
 ############################################################
 # Build antimony from latest source
-#   http://svn.code.sf.net/p/antimony/code/
+#   svn checkout http://svn.code.sf.net/p/phrasedml/code/trunk phrasedml-code
 #
 # Usage: 
-# 	./antimony.sh 2>&1 | tee ./logs/antimony.log
+# 	./phrasedml.sh 2>&1 | tee ./logs/phrasedml.log
 #
 # @author: Matthias Koenig
-# @date: 2016-01-06
+# @date: 2016-01-23
 ############################################################
 date
 echo "--------------------------------------"
-echo "antimony installation"
+echo "phrasedml installation"
 echo "--------------------------------------"
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-CODE=antimony
-ANTIMONY=antimony
+CODE=phrasedml
+PHRASEDML=phrasedml
 
 SVN_DIR=$HOME/svn
 TMP_DIR=$HOME/tmp
@@ -26,11 +26,6 @@ if ! [ -d "$TMP_DIR" ]; then
 	mkdir $TMP_DIR
 fi
 
-echo "---------------------------------------"
-echo "install dependencies"
-echo "---------------------------------------"
-sudo apt-get -y install libqt4-core libqt4-dev
-
 echo "--------------------------------------"
 echo "pull repository"
 echo "--------------------------------------"
@@ -39,29 +34,30 @@ if [ -d "${SVN_DIR}/$CODE" ]; then
 	svn update
 else
 	cd $SVN_DIR
-	svn checkout http://svn.code.sf.net/p/antimony/code/ $CODE
+	svn checkout http://svn.code.sf.net/p/phrasedml/code/trunk $CODE
 	cd ${SVN_DIR}/$CODE
 fi
 
 echo "--------------------------------------"
-echo "build antimony"
+echo "build phrasedml"
 echo "--------------------------------------"
-ANTIMONY_BUILD=$TMP_DIR/antimony_build
-echo "Build directory:" $ANTIMONY_BUILD
-if [ -d "$ANTIMONY_BUILD" ]; then
-	sudo rm -rf $ANTIMONY_BUILD
+BUILD_DIR=$TMP_DIR/${PHRASEDML}_build
+echo "Build directory:" $BUILD_DIR
+if [ -d "$BUILD_DIR" ]; then
+	sudo rm -rf $BUILD_DIR
 fi
-mkdir $ANTIMONY_BUILD
+mkdir $BUILD_DIR
 
 # cmake build
 # if build with -fPIC is necessary, toggle advanced in cmake-gui and set
 # CMAKE_CXX_FLAGS = -fPIC
-cd $ANTIMONY_BUILD
-cmake -DWITH_CELLML=ON -DCELLML_API_INSTALL_DIR="$HOME/tmp/cellml-sdk-1.13-Linux-x86_64" -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
+cd $BUILD_DIR
+
+cmake -DWITH_PYTHON=ON -DCELLML_API_INSTALL_DIR="$HOME/tmp/cellml-sdk-1.13-Linux-x86_64" -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON ${SVN_DIR}/$CODE
 make
 
 echo "--------------------------------------"
-echo "install antimony"
+echo "install phrasedml"
 echo "--------------------------------------"
 sudo make install
 
@@ -69,6 +65,6 @@ echo "--------------------------------------"
 echo "test installation"
 echo "--------------------------------------"
 cd $DIR
-./antimony_test.py
-pip list | grep antimony
+
+pip list | grep phrasedml
 

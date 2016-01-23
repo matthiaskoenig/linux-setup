@@ -17,6 +17,9 @@ SBML installation with language bindings for R and python.
 ```
 ./libsbml.sh 2>&1 | tee ./logs/libsbml.log
 ```
+**libcellml**
+
+
 **libsedml**
 SEDML installation with language bindings for R and python
 ```
@@ -31,7 +34,10 @@ libRoadrunner installation for numerical integration of kinetic models.
 ```
 ./antimony.sh 2>&1 | tee ./logs/antimony.log
 ```
-
+**phrasedml**  
+```
+./phrasedml.sh 2>&1 | tee ./logs/phrasedml.log
+```
 **tellurium**  
 ```
 ./tellurium.sh 2>&1 | tee ./logs/tellurium.log

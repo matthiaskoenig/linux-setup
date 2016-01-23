@@ -9,7 +9,10 @@
 # @author: Matthias Koenig
 # @date: 2016-01-07
 ############################################################
-
+date
+echo "--------------------------------------"
+echo "libsbml installation"
+echo "--------------------------------------"
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 SBMLCODE=sbml-code
 LIBSBML=libsbml

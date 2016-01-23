@@ -10,7 +10,10 @@
 # @author: Matthias Koenig
 # @date: 2016-01-08
 ############################################################
-
+date
+echo "--------------------------------------"
+echo "libsedml installation"
+echo "--------------------------------------"
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 NUMLCODE=numl-code
 SEDMLCODE=sedml-code

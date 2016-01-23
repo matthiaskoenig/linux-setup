@@ -16,7 +16,7 @@
 # Issues
 # - how to sudo with password?
 ############################################################
-
+date
 echo "*** create and delete directories ***"
 rmdir $HOME/Documents
 rmdir $HOME/Music
@@ -100,4 +100,5 @@ sudo -E pip install networkx --upgrade
 sudo apt-get -y install pandoc pandoc-citeproc
 sudo apt-get -y install python-tk
 sudo -E pip install seaborn --upgrade
+sudo -E pip install nose coverage --upgrade
 

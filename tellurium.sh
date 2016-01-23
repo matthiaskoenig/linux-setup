@@ -13,7 +13,10 @@
 # @author: Matthias Koenig
 # @date: 2016-01-15
 ############################################################
-
+date
+echo "--------------------------------------"
+echo "tellurium installation"
+echo "--------------------------------------"
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 GIT_DIR=$HOME/git 
 TMP_DIR=$HOME/tmp
