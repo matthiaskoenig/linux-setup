@@ -76,7 +76,7 @@ echo "--------------------------------------"
 echo "Adding to PYTHONPATH: /usr/local/lib/python2.7/site-packages/libsbml"
 cat > libsbml.sh << EOF0
 #!/bin/bash
-PYTHONPATH=\$PYTHONPATH:/usr/local/lib/python2.7/site-packages/libsbml
+export PYTHONPATH=\$PYTHONPATH:/usr/local/lib/python2.7/site-packages/libsbml
 EOF0
 sudo mv libsbml.sh /etc/profile.d/
 source /etc/profile.d/libsbml.sh

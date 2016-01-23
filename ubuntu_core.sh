@@ -15,7 +15,6 @@
 #
 # Issues
 # - how to sudo with password?
-# - how to set environmental variables
 ############################################################
 
 echo "*** create and delete directories ***"
