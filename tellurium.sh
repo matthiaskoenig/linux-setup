@@ -33,6 +33,7 @@ echo "--------------------------------------"
 sudo -E pip install nose coverage --upgrade
 sudo apt-get install graphviz libgraphviz-dev
 sudo -E pip install pygraphviz
+sudo -E pip install bioservices
 
 
 echo "--------------------------------------"
