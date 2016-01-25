@@ -28,6 +28,14 @@ if ! [ -d "$TMP_DIR" ]; then
 fi
 
 echo "--------------------------------------"
+echo "tellurium-dependencies"
+echo "--------------------------------------"
+sudo -E pip install nose coverage --upgrade
+sudo apt-get install graphviz libgraphviz-dev
+sudo -E pip install pygraphviz
+
+
+echo "--------------------------------------"
 echo "tellurium-examples"
 echo "--------------------------------------"
 TELLURIUM_EXAMPLES=tellurium-examples
