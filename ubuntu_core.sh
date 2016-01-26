@@ -101,4 +101,5 @@ sudo apt-get -y install pandoc pandoc-citeproc
 sudo apt-get -y install python-tk
 sudo -E pip install seaborn --upgrade
 sudo -E pip install nose coverage --upgrade
+sudo -E pip install sklearn --upgrade
 
