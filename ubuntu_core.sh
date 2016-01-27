@@ -100,6 +100,7 @@ sudo -E pip install networkx --upgrade
 sudo apt-get -y install pandoc pandoc-citeproc
 sudo apt-get -y install python-tk
 sudo -E pip install seaborn --upgrade
-sudo -E pip install nose coverage --upgrade
+sudo -E pip install nose coverage mock --upgrade
 sudo -E pip install sklearn --upgrade
+sudo -E pip install virtualenv -- upgrade
 
