@@ -47,6 +47,10 @@ else
 	git clone https://github.com/NuML/NuML.git $NUMLCODE
 	cd $GIT_DIR/$NUMLCODE
 fi
+echo "*commit*"
+git rev-parse HEAD
+
+echo 
 
 echo "--------------------------------------"
 echo "build libNUML"
@@ -85,6 +89,8 @@ else
 	git clone https://github.com/fbergmann/libSEDML.git $SEDMLCODE
 	cd $GIT_DIR/$SEDMLCODE
 fi
+echo "*commit*"
+git rev-parse HEAD
 
 echo "--------------------------------------"
 echo "build libSEDML"

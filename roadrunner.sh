@@ -50,6 +50,9 @@ else
     cd ${GIT_DIR}/$ROADRUNNER_DEPS
 fi
 git checkout master
+echo "*commit*"
+git rev-parse HEAD
+
 
 # pull the develop repository
 echo "--------------------------------------"
@@ -67,6 +70,8 @@ fi
 cd ${GIT_DIR}/$ROADRUNNER
 # git checkout tags/1.4.1
 git checkout develop
+echo "*commit*"
+git rev-parse HEAD
 
 # read -rsp $'Press any key to continue...\n' -n1 key
 

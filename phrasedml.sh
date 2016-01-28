@@ -53,7 +53,9 @@ mkdir $BUILD_DIR
 # CMAKE_CXX_FLAGS = -fPIC
 cd $BUILD_DIR
 
-cmake -DWITH_PYTHON=ON -DCELLML_API_INSTALL_DIR="$HOME/tmp/cellml-sdk-1.13-Linux-x86_64" -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON ${SVN_DIR}/$CODE
+#cmake -DWITH_PYTHON=ON -DCELLML_API_INSTALL_DIR="$HOME/tmp/cellml-sdk-1.13-Linux-x86_64" -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON ${SVN_DIR}/$CODE
+cmake -DWITH_PYTHON=ON -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=OFF ${SVN_DIR}/$CODE
+
 make
 
 echo "--------------------------------------"

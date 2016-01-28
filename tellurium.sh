@@ -50,6 +50,8 @@ else
     cd ${GIT_DIR}/$TELLURIUM_EXAMPLES
 fi
 git checkout master
+echo "*commit*"
+git rev-parse HEAD
 
 echo "--------------------------------------"
 echo "tellurium"
