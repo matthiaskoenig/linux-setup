@@ -102,5 +102,5 @@ sudo apt-get -y install python-tk
 sudo -E pip install seaborn --upgrade
 sudo -E pip install nose coverage mock --upgrade
 sudo -E pip install sklearn --upgrade
-sudo -E pip install virtualenv -- upgrade
+sudo -E pip install virtualenv --upgrade
 

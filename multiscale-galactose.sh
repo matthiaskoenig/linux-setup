@@ -27,6 +27,7 @@ fi
 REPOSITORY=https://github.com/matthiaskoenig/multiscale-galactose.git
 MG_NAME=multiscale-galactose
 MG_DIR=$GIT_DIR/$MG_NAME
+echo $MG_DIR
 
 echo "--------------------------------------"
 echo "pull multiscale-galactose repository"
@@ -43,7 +44,6 @@ git checkout develop
 echo "*commit*"
 git rev-parse HEAD
 
-exit
 # ln -s $MULTISCALE_GALACTOSE ~/multiscale-galactose
 # mkdir $MULTISCALE_GALACTOSE_RESULTS
 
@@ -51,7 +51,7 @@ echo "--------------------------------------"
 echo "postgres & django client"
 echo "--------------------------------------"
 # postgres
-sudo apt-get install postgresql-client-common postgresql-client python-dev libpq-dev pgadmin3
+sudo apt-get -y install postgresql-client-common postgresql-client python-dev libpq-dev pgadmin3
 # django
 sudo -E pip install rpy2
 sudo -E pip install psycopg2==2.6.1
@@ -61,9 +61,9 @@ sudo -E pip install django-debug-toolbar --upgrade
 sudo -E pip install django-enumfield --upgrade
 sudo -E pip install pandas matplotlib requests sh enum34 --upgrade
 # MPI
-sudo apt-get install libcr-dev mpich2 mpich2-doc
+sudo apt-get -y install libcr-dev mpich2 mpich2-doc
 sudo -E pip install mpi4py
 # h5py
-sudo apt-get install libhdf5-dev
+sudo apt-get -y install libhdf5-dev
 sudo -E pip install Cython --upgrade
 sudo -E pip install h5py --upgrade
