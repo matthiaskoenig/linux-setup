@@ -90,11 +90,11 @@ EOF0
 sudo mv java.sh /etc/profile.d/
 
 # echo "*** cmake ***"
-sudo -E apt-get remove cmake cmake-data cmake-gui
+sudo -E apt-get -y remove cmake cmake-data cmake-gui
 sudo -E apt-get install -y software-properties-common
 sudo -E add-apt-repository -y ppa:george-edison55/cmake-3.x
 sudo -E apt-get update
-sudo -E apt-get install cmake cmake-qt-gui
+sudo -E apt-get -y install cmake cmake-qt-gui
 
 
 echo "-----------------------------------------"
@@ -109,6 +109,9 @@ sudo apt-get -y install python-tk
 sudo -E pip install seaborn --upgrade
 sudo -E pip install nose coverage mock --upgrade
 sudo -E pip install sklearn --upgrade
-sudo -E pip install virtualenv --upgrade
 sudo -E pip install palettable --upgrade
+
+# virtual environment
+sudo -E pip install virtualenv --upgrade
+sudo -E pip install virtualenvwrapper --upgrade
 
