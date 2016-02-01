@@ -89,6 +89,13 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 EOF0
 sudo mv java.sh /etc/profile.d/
 
+# echo "*** cmake ***"
+sudo -E apt-get remove cmake cmake-data cmake-gui
+sudo -E apt-get install -y software-properties-common
+sudo -E add-apt-repository -y ppa:george-edison55/cmake-3.x
+sudo -E apt-get update
+sudo -E apt-get install cmake cmake-qt-gui
+
 
 echo "-----------------------------------------"
 echo "Python dependencies"
@@ -103,4 +110,5 @@ sudo -E pip install seaborn --upgrade
 sudo -E pip install nose coverage mock --upgrade
 sudo -E pip install sklearn --upgrade
 sudo -E pip install virtualenv --upgrade
+sudo -E pip install palettable --upgrade
 
