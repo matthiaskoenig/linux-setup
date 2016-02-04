@@ -18,6 +18,7 @@
 ############################################################
 date
 echo "*** create and delete directories ***"
+# only deletes if empty
 rmdir $HOME/Documents
 rmdir $HOME/Music
 rmdir $HOME/Pictures

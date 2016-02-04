@@ -31,8 +31,9 @@ echo "--------------------------------------"
 echo "tellurium-dependencies"
 echo "--------------------------------------"
 sudo -E pip install nose coverage --upgrade
-sudo apt-get install graphviz libgraphviz-dev
-sudo -E pip install pygraphviz
+sudo apt-get -y install graphviz graphviz-dev libgraphviz-dev
+# sudo -E pip install pygraphviz
+sudo -E pip install pygraphviz --install-option="--include-path=/usr/include/graphviz" --install-option="--library-path=/usr/lib/graphviz/" --upgrade
 sudo -E pip install bioservices
 
 
