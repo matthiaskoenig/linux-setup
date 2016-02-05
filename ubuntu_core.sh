@@ -111,6 +111,7 @@ sudo -E pip install seaborn --upgrade
 sudo -E pip install nose coverage mock --upgrade
 sudo -E pip install sklearn --upgrade
 sudo -E pip install palettable --upgrade
+sudo -E pip install pyreadline --upgrade
 
 # virtual environment
 sudo -E pip install virtualenv --upgrade
