@@ -99,6 +99,9 @@ cd $ROADRUNNER_BUILD
 cmake -DCMAKE_INSTALL_PREFIX=$ROADRUNNER_INSTALL -DTHIRD_PARTY_INSTALL_FOLDER=$ROADRUNNER_INSTALL -DBUILD_LLVM=ON -DBUILD_PYTHON=ON -DUSE_TR1_CXX_NS=ON -DBUILD_TESTS=ON -DBUILD_TEST_TOOLS=ON ${GIT_DIR}/$ROADRUNNER
 make
 make install
+ctest -VV
+
+# run the tests
 
 echo "--------------------------------------"
 echo "roadrunner python bindings"
