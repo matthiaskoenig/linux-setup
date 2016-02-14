@@ -49,14 +49,25 @@ if [ -d "$SBML2MATLAB_BUILD" ]; then
 fi
 mkdir $SBML2MATLAB_BUILD
 
+SBML2MATLAB_INSTALL=$TMP_DIR/sbml2matlab_install
+echo "Install directory:" $SBML2MATLAB_INSTALL
+if [ -d "$SBML2MATLAB_INSTALL" ]; then
+	sudo rm -rf $SBML2MATLAB_INSTALL
+fi
+mkdir $SBML2MATLAB_INSTALL
+
+
 cd $SBML2MATLAB_BUILD
-cmake -DLIBSBML_STATIC_LIBRARY="/usr/local/lib/libsbml-static.a" -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_PYTHON=ON ${GIT_DIR}/$CODE
+cmake -DLIBSBML_STATIC_LIBRARY="/usr/local/lib/libsbml-static.a" -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_PYTHON=ON -DCMAKE_INSTALL_PREFIX=$SBML2MATLAB_INSTALL ${GIT_DIR}/$CODE
 make
 
 echo "--------------------------------------"
 echo "install sbml2matlab"
 echo "--------------------------------------"
+# remove old files
+sudo rm -rf /usr/local/lib/python2.7/site-packages/sbml2matlab
+sudo rm /usr/local/bin/sbml2matlab
 sudo make install
 
-# TODO: export path, test the import
-
+cd $SBML2MATLAB_INSTALL
+sudo python setup.py install
