@@ -69,5 +69,5 @@ sudo rm -rf /usr/local/lib/python2.7/site-packages/sbml2matlab
 sudo rm /usr/local/bin/sbml2matlab
 sudo make install
 
-cd $SBML2MATLAB_INSTALL
+cd $SBML2MATLAB_INSTALL/lib/python2.7/site-packages
 sudo python setup.py install
