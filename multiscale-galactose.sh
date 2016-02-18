@@ -67,3 +67,4 @@ sudo -E pip install mpi4py
 sudo apt-get -y install libhdf5-dev
 sudo -E pip install Cython --upgrade
 sudo -E pip install h5py --upgrade
+sudo -E pip install pyexcel pyexcel-xlsx --upgrade
