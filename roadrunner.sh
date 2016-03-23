@@ -49,7 +49,8 @@ else
 	git clone https://github.com/sys-bio/libroadrunner-deps.git $ROADRUNNER_DEPS
     cd ${GIT_DIR}/$ROADRUNNER_DEPS
 fi
-git checkout master
+# git checkout master
+git checkout d6844db999a6064ec
 echo "*commit*"
 git rev-parse HEAD
 
@@ -69,7 +70,9 @@ fi
 # git tag -l
 cd ${GIT_DIR}/$ROADRUNNER
 # git checkout tags/1.4.1
-git checkout develop
+git checkout fa351b1ee0bdf4
+# git checkout develop
+
 echo "*commit*"
 git rev-parse HEAD
 
@@ -99,9 +102,8 @@ cd $ROADRUNNER_BUILD
 cmake -DCMAKE_INSTALL_PREFIX=$ROADRUNNER_INSTALL -DTHIRD_PARTY_INSTALL_FOLDER=$ROADRUNNER_INSTALL -DBUILD_LLVM=ON -DBUILD_PYTHON=ON -DUSE_TR1_CXX_NS=ON -DBUILD_TESTS=ON -DBUILD_TEST_TOOLS=ON ${GIT_DIR}/$ROADRUNNER
 make
 make install
+# run the c++ tests
 ctest -VV
-
-# run the tests
 
 echo "--------------------------------------"
 echo "roadrunner python bindings"
