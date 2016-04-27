@@ -42,6 +42,8 @@ echo "$GIT_DIR/$NUMLCODE"
 if [ -d "$GIT_DIR/$NUMLCODE" ]; then
 	cd $GIT_DIR/$NUMLCODE
 	git pull
+	# fix to get working libsedml
+	git checkout 31d9203
 else
 	cd $GIT_DIR
 	git clone https://github.com/NuML/NuML.git $NUMLCODE
