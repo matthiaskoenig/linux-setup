@@ -55,7 +55,7 @@ sudo apt-get -y install postgresql-client-common postgresql-client python-dev li
 # django
 sudo -E pip install rpy2
 sudo -E pip install psycopg2==2.6.1
-sudo -E pip install django==1.8.7
+sudo -E pip install django==1.9.6
 sudo -E pip install django-extensions django-haystack --upgrade
 sudo -E pip install django-debug-toolbar --upgrade
 sudo -E pip install django-enumfield --upgrade
