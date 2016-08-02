@@ -46,6 +46,7 @@ sudo apt-get -y install gparted
 
 echo "*** terminator ***"
 sudo apt-get -y install terminator
+sudo apt-get -y install htop
 
 echo "*** firefox developer edition ***"
 sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
