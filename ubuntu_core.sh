@@ -39,7 +39,7 @@ echo "*** Install codecs ***"
 sudo apt-get -y install ubuntu-restricted-extras libxine1-ffmpeg gxine mencoder mpeg2dec vorbis-tools id3v2 mpg321 mpg123 libflac++6 totem-mozilla icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 libjpeg-progs flac faac faad sox ffmpeg2theora libmpeg2-4 uudeview flac libmpeg3-1 mpeg3-utils mpegdemux liba52-0.7.4-dev 
 
 echo "*** gnome session flashback ***"
-sudo apt-get -y install gnome-session-flashback compizconfig-settings-manager compiz-plugins
+# sudo apt-get -y install gnome-session-flashback compizconfig-settings-manager compiz-plugins
 
 echo "*** gparted ***"
 sudo apt-get -y install gparted
@@ -48,10 +48,10 @@ echo "*** terminator ***"
 sudo apt-get -y install terminator
 sudo apt-get -y install htop
 
-echo "*** firefox developer edition ***"
-sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
-sudo apt-get update
-sudo apt-get -y install firefox
+# echo "*** firefox developer edition ***"
+# sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
+# sudo apt-get update
+# sudo apt-get -y install firefox
 
 echo "*** ssh ***"
 sudo apt-get -y install openssh-server
