@@ -40,9 +40,6 @@ sudo pip install --upgrade setuptools pip
 echo "*** Install codecs ***"
 sudo apt-get -y install ubuntu-restricted-extras libxine1-ffmpeg gxine mencoder mpeg2dec vorbis-tools id3v2 mpg321 mpg123 libflac++6v5 icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 libjpeg-progs flac faac faad sox ffmpeg2theora libmpeg2-4 uudeview flac mpeg3-utils mpegdemux liba52-0.7.4-dev 
 
-# echo "*** gnome session flashback ***"
-# sudo apt-get -y install gnome-session-flashback compizconfig-settings-manager compiz-plugins
-
 echo "*** gparted ***"
 sudo apt-get -y install gparted
 
@@ -50,16 +47,12 @@ echo "*** terminator ***"
 sudo apt-get -y install terminator
 sudo apt-get -y install htop
 
-# echo "*** firefox developer edition ***"
-# sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
-# sudo apt-get update
-# sudo apt-get -y install firefox
-
 echo "*** htop ***"
 sudo apt-get -y install htop
+sudo apt-get -y install indicator-multiload
 
 # needed for graphics drivers
-echo "*** dh-modaliases ***
+echo "*** dh-modaliases ***"
 sudo apt-get -y install dh-modaliases
 
 echo "*** ssh ***"
