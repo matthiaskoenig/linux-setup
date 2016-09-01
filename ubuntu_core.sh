@@ -35,12 +35,12 @@ mkdir $HOME/svn
 echo "*** Update & upgrade system ***"
 sudo apt-get update
 sudo apt-get -y upgrade
-sudo pip install --upgrade setuptools pip.
+sudo pip install --upgrade setuptools pip
 
 echo "*** Install codecs ***"
-sudo apt-get -y install ubuntu-restricted-extras libxine1-ffmpeg gxine mencoder mpeg2dec vorbis-tools id3v2 mpg321 mpg123 libflac++6 totem-mozilla icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 libjpeg-progs flac faac faad sox ffmpeg2theora libmpeg2-4 uudeview flac libmpeg3-1 mpeg3-utils mpegdemux liba52-0.7.4-dev 
+sudo apt-get -y install ubuntu-restricted-extras libxine1-ffmpeg gxine mencoder mpeg2dec vorbis-tools id3v2 mpg321 mpg123 libflac++6v5 icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 libjpeg-progs flac faac faad sox ffmpeg2theora libmpeg2-4 uudeview flac mpeg3-utils mpegdemux liba52-0.7.4-dev 
 
-echo "*** gnome session flashback ***"
+# echo "*** gnome session flashback ***"
 # sudo apt-get -y install gnome-session-flashback compizconfig-settings-manager compiz-plugins
 
 echo "*** gparted ***"
@@ -119,7 +119,6 @@ echo "-----------------------------------------"
 # general python requirements, installed via pip where possible, otherwise fallback to apt-get
 
 sudo apt-get -y install build-essential python-dev python-pip libfreetype6-dev
-sudo -E pip install --upgrade pip
 sudo -E pip install numpy scipy matplotlib ipython pandas sympy nose jupyter --upgrade
 sudo -E pip install networkx --upgrade
 sudo apt-get -y install pandoc pandoc-citeproc
