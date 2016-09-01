@@ -8,6 +8,8 @@
 # 	cd $GIT_DIR
 #
 # 	git clone https://github.com/matthiaskoenig/linux-setup
+#   cd linux-setup
+#	mkdir logs
 #	./ubuntu_core.sh 2>&1 | tee ./logs/ubuntu_core.log
 #
 # @author: Matthias Koenig
@@ -52,6 +54,13 @@ sudo apt-get -y install htop
 # sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
 # sudo apt-get update
 # sudo apt-get -y install firefox
+
+echo "*** htop ***"
+sudo apt-get -y install htop
+
+# needed for graphics drivers
+echo "*** dh-modaliases ***
+sudo apt-get -y install dh-modaliases
 
 echo "*** ssh ***"
 sudo apt-get -y install openssh-server
@@ -108,7 +117,9 @@ echo "-----------------------------------------"
 echo "Python dependencies"
 echo "-----------------------------------------"
 # general python requirements, installed via pip where possible, otherwise fallback to apt-get
+
 sudo apt-get -y install build-essential python-dev python-pip libfreetype6-dev
+sudo -E pip install --upgrade pip
 sudo -E pip install numpy scipy matplotlib ipython pandas sympy nose jupyter --upgrade
 sudo -E pip install networkx --upgrade
 sudo apt-get -y install pandoc pandoc-citeproc
