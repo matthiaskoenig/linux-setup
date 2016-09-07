@@ -32,7 +32,9 @@ fi
 
 # install dependencies
 echo "install roadrunner dependencies"
-sudo apt-get -y install llvm llvm-dev git libxml2-dev
+# sudo apt-get -y install llvm llvm-dev git libxml2-dev
+# sudo apt-get -y install llvm-3.7 llvm-3.7-dev llvm-3.7-runtime git libxml2-dev
+
 sudo -E pip install numpy --upgrade
 sudo -E pip install scipy --upgrade
 
@@ -71,6 +73,7 @@ fi
 cd ${GIT_DIR}/$ROADRUNNER
 # git checkout tags/1.4.1
 # git checkout fa351b1ee0bdf4
+# git checkout tags/1.4.8
 git checkout develop
 
 echo "*commit*"
