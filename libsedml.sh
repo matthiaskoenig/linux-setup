@@ -42,6 +42,7 @@ echo "$GIT_DIR/$NUMLCODE"
 if [ -d "$GIT_DIR/$NUMLCODE" ]; then
 	cd $GIT_DIR/$NUMLCODE
 	git pull
+    git checkout 46558fcea3d
 else
 	cd $GIT_DIR
 	git clone https://github.com/NuML/NuML.git $NUMLCODE
@@ -65,7 +66,7 @@ mkdir $NUML_BUILD
 cd $NUML_BUILD
 
 cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON ${GIT_DIR}/$NUMLCODE/libnuml
-make
+make -j8
 
 echo "--------------------------------------"
 echo "install libnuml"
@@ -104,7 +105,7 @@ mkdir $SEDML_BUILD
 # here are the cmake files
 cd $SEDML_BUILD
 cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON ${GIT_DIR}/$SEDMLCODE
-make
+make -j8
 
 echo "--------------------------------------"
 echo "install libSEDML"
