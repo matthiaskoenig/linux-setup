@@ -2,6 +2,8 @@
 ############################################################
 # Build roadrunner directly from the release files on
 # github https://github.com/sys-bio/roadrunner
+# The dependencies must be build first, i.e. run at least
+# once roadrunner-deps.sh
 #
 # Usage: 
 # 	./roadrunner.sh 2>&1 | tee ./logs/roadrunner.log
@@ -10,7 +12,7 @@
 # checkout command for roadrunner.
 #
 # @author: Matthias Koenig
-# @date: 2016-01-06
+# @date: 2016-09-08
 ############################################################
 date
 echo "--------------------------------------"
@@ -23,38 +25,7 @@ ROADRUNNER_DEPS=roadrunner-deps
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 GIT_DIR=$HOME/git 
 TMP_DIR=$HOME/tmp
-if ! [ -d "$GIT_DIR" ]; then
-	mkdir $GIT_DIR
-fi
-if ! [ -d "$TMP_DIR" ]; then
-	mkdir $TMP_DIR
-fi
 
-# install dependencies
-echo "install roadrunner dependencies"
-# sudo apt-get -y install llvm llvm-dev git libxml2-dev
-# sudo apt-get -y install llvm-3.7 llvm-3.7-dev llvm-3.7-runtime git libxml2-dev
-
-sudo -E pip install numpy --upgrade
-sudo -E pip install scipy --upgrade
-
-# libroadrunner dependencies
-# https://github.com/sys-bio/libroadrunner-deps.git
-echo "--------------------------------------"
-echo "pull libroadrunner-deps repository"
-echo "--------------------------------------"
-if [ -d "${GIT_DIR}/$ROADRUNNER_DEPS" ]; then
-	cd ${GIT_DIR}/$ROADRUNNER_DEPS
-	git pull
-else
-	cd $GIT_DIR
-	git clone https://github.com/sys-bio/libroadrunner-deps.git $ROADRUNNER_DEPS
-    cd ${GIT_DIR}/$ROADRUNNER_DEPS
-fi
-# git checkout d6844db999a6064ec
-git checkout master
-echo "*commit*"
-git rev-parse HEAD
 
 
 # pull the develop repository
@@ -69,11 +40,8 @@ else
 	git clone https://github.com/sys-bio/roadrunner.git $ROADRUNNER	
 fi
 # checkout release tag or version to build
-# git tag -l
 cd ${GIT_DIR}/$ROADRUNNER
 # git checkout tags/1.4.1
-# git checkout fa351b1ee0bdf4
-# git checkout tags/1.4.8
 git checkout develop
 
 echo "*commit*"
@@ -81,30 +49,23 @@ git rev-parse HEAD
 
 # read -rsp $'Press any key to continue...\n' -n1 key
 
-# create build folders
-echo "--------------------------------------"
-echo "build roadrunner third party deps"
-echo "--------------------------------------"
-ROADRUNNER_BUILD_THIRDPARTY=$TMP_DIR/roadrunner_build_thirdparty
-ROADRUNNER_BUILD=$TMP_DIR/roadrunner_build
-ROADRUNNER_INSTALL=$TMP_DIR/roadrunner_install
-sudo rm -rf $ROADRUNNER_INSTALL
-mkdir $ROADRUNNER_INSTALL
-
-rm -rf $ROADRUNNER_BUILD_THIRDPARTY
-mkdir $ROADRUNNER_BUILD_THIRDPARTY
-cd $ROADRUNNER_BUILD_THIRDPARTY
-cmake -DCMAKE_INSTALL_PREFIX=$ROADRUNNER_INSTALL ${GIT_DIR}/$ROADRUNNER_DEPS && make -j4 install
 
 echo "--------------------------------------"
 echo "build roadrunner"
 echo "--------------------------------------"
+ROADRUNNER_BUILD=${TMP_DIR}/roadrunner_build
+ROADRUNNER_INSTALL=${TMP_DIR}/roadrunner_install
 rm -rf $ROADRUNNER_BUILD
 mkdir $ROADRUNNER_BUILD
 cd $ROADRUNNER_BUILD
-cmake -DCMAKE_INSTALL_PREFIX=$ROADRUNNER_INSTALL -DTHIRD_PARTY_INSTALL_FOLDER=$ROADRUNNER_INSTALL -DBUILD_LLVM=ON -DBUILD_PYTHON=ON -DUSE_TR1_CXX_NS=ON -DBUILD_TESTS=ON -DBUILD_TEST_TOOLS=ON -DLIBSBML_INCLUDE_DIR=$ROADRUNNER_INSTALL/include -DLIBSBML_LIBRARY=$ROADRUNNER_INSTALL/lib/libsbml.so -DLIBSBML_STATIC_LIBRARY=$ROADRUNNER_INSTALL/lib/libsbml-static.a ${GIT_DIR}/$ROADRUNNER
 
-make
+LLVM=llvm
+LLVM_VERSION=3.5.2
+LLVM_INSTALL=$TMP_DIR/${LLVM}-${LLVM_VERSION}_install
+
+cmake -DCMAKE_INSTALL_PREFIX=$ROADRUNNER_INSTALL -DTHIRD_PARTY_INSTALL_FOLDER=$ROADRUNNER_INSTALL -DBUILD_LLVM=ON -DBUILD_PYTHON=ON -DUSE_TR1_CXX_NS=ON -DBUILD_TESTS=ON -DBUILD_TEST_TOOLS=ON -DLIBSBML_INCLUDE_DIR=$ROADRUNNER_INSTALL/include -DLIBSBML_LIBRARY=$ROADRUNNER_INSTALL/lib/libsbml.so -DLIBSBML_STATIC_LIBRARY=$ROADRUNNER_INSTALL/lib/libsbml-static.a -DZLIB_LIBRARY=/usr/lib/x86_64-linux-gnu/libz.so -DBZ2_LIBRARY=/usr/lib/x86_64-linux-gnu/libbz2.so -DLLVM_CONFIG_EXECUTABLE=${LLVM_INSTALL}/bin/llvm-config ${GIT_DIR}/$ROADRUNNER
+
+make -j8
 make install
 # run the c++ tests
 ctest -VV

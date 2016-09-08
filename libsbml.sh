@@ -56,7 +56,7 @@ mkdir $LIBSBML_BUILD
 # here are the cmake files
 cd $LIBSBML_BUILD
 cmake -DENABLE_COMP=ON -DENABLE_FBC=ON -DENABLE_LAYOUT=ON -DENABLE_QUAL=ON -DWITH_EXAMPLES=ON -DWITH_PYTHON=ON -DWITH_R=ON ${SVN_DIR}/$SBMLCODE/libsbml
-make
+make -j8
 
 echo "--------------------------------------"
 echo "install libsbml"
@@ -70,7 +70,7 @@ sudo rm /usr/local/lib/python2.7/site-packages/libsbml.pth
 sudo rm -rf /usr/local/lib/python2.7/site-packages/libsbml
 
 # installation
-sudo make install
+sudo make -j8 install
 
 echo "--------------------------------------"
 echo "python bindings"

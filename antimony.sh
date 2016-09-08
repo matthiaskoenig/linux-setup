@@ -70,12 +70,12 @@ cd $ANTIMONY_BUILD
 # cmake -DWITH_CELLML=ON -DCELLML_API_INSTALL_DIR="$HOME/tmp/cellml-sdk-1.13-Linux-x86_64" -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
 # without cellml
 cmake -DWITH_CELLML=OFF -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
-make
+make -j8
 
 echo "--------------------------------------"
 echo "install antimony"
 echo "--------------------------------------"
-sudo make install
+sudo make -j8 install
 
 echo "--------------------------------------"
 echo "test installation"

@@ -9,6 +9,7 @@
 ./libsbml.sh 2>&1 | tee ./logs/libsbml.log
 ./libcellml.sh 2>&1 | tee ./logs/libcellml.log
 ./libsedml.sh 2>&1 | tee ./logs/libsedml.log
+./roadrunner-deps.sh 2>&1 | tee ./logs/roadrunner-deps.log
 ./roadrunner.sh 2>&1 | tee ./logs/roadrunner.log
 ./antimony.sh 2>&1 | tee ./logs/antimony.log
 ./phrasedml.sh 2>&1 | tee ./logs/phrasedml.log
