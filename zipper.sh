@@ -62,7 +62,15 @@ cd ${BUILD}
 
 #cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON ${GIT_DIR}/$CODE
 
-cmake ${GIT_DIR}/$CODE
+cmake -DWITH_QT_FILESYSTEM=ON ${GIT_DIR}/$CODE
 make -j8
 
-exit
+echo "--------------------------------------"
+echo "install zipper"
+echo "--------------------------------------"
+# remove old files
+sudo rm -rf /usr/local/include/zipper
+sudo rm  /usr/local/lib/libZipper-static.a
+
+# installation
+sudo make -j8 install
