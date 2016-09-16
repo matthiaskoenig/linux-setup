@@ -24,6 +24,9 @@ cd ..
 git clone https://github.com/apache/incubator-taverna-language.git
 git clone https://github.com/PRIDE-Utilities/ols-client.git
 
+git clone https://github.com/sbmlteam/jsbml.git
+
+
 # PLF
 git clone https://github.com/matthiaskoenig/sbmlutils
 git clone https://github.com/matthiaskoenig/modelmanager/

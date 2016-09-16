@@ -7,7 +7,7 @@
 ############################################################
 ./ubuntu_core.sh 2>&1 | tee ./logs/ubuntu_core.log
 ./libsbml.sh 2>&1 | tee ./logs/libsbml.log
-./libcellml.sh 2>&1 | tee ./logs/libcellml.log
+# ./libcellml.sh 2>&1 | tee ./logs/libcellml.log
 ./libsedml.sh 2>&1 | tee ./logs/libsedml.log
 ./roadrunner-deps.sh 2>&1 | tee ./logs/roadrunner-deps.log
 ./roadrunner.sh 2>&1 | tee ./logs/roadrunner.log
