@@ -29,3 +29,10 @@ git clone https://github.com/matthiaskoenig/sbmlutils
 git clone https://github.com/matthiaskoenig/modelmanager/
 git clone https://github.com/matthiaskoenig/multiscale-galactose
 
+# cobraPy
+
+# cyREST
+
+# py2cytoscape
+git clone https://github.com/matthiaskoenig/py2cytoscape.git
+
