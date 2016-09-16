@@ -1,9 +1,7 @@
 #!/bin/bash
 ############################################################
-# Install the full simulation stack
-#
-# @author: Matthias Koenig
-# @date: 2016-02-16
+# Install COMBINE simulation stack
+# for kinetic modeling.
 ############################################################
 ./ubuntu_core.sh 2>&1 | tee ./logs/ubuntu_core.log
 ./libsbml.sh 2>&1 | tee ./logs/libsbml.log
@@ -13,6 +11,9 @@
 ./roadrunner.sh 2>&1 | tee ./logs/roadrunner.log
 ./antimony.sh 2>&1 | tee ./logs/antimony.log
 ./phrasedml.sh 2>&1 | tee ./logs/phrasedml.log
+./zipper.sh 2>&1 | tee ./logs/zipper.log
+./libCombine.sh 2>&1 | tee ./logs/libCombine.log
+
 ./sbml2matlab.sh 2>&1 | tee ./logs/sbml2matlab.log
 ./tellurium.sh 2>&1 | tee ./logs/tellurium.log
 ./spyder.sh 2>&1 | tee ./logs/spyder.log

@@ -59,9 +59,6 @@ mkdir ${BUILD}
 
 # here are the cmake files
 cd ${BUILD}
-
-#cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON ${GIT_DIR}/$CODE
-
 cmake -DWITH_QT_FILESYSTEM=ON ${GIT_DIR}/$CODE
 make -j8
 
