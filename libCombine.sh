@@ -62,22 +62,18 @@ cd ${BUILD}
 cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_QT_FILESYSTEM=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON ${GIT_DIR}/$CODE
 make -j8
 
-exit
-
 echo "--------------------------------------"
 echo "install libCombine"
 echo "--------------------------------------"
 # remove old files
-# TODO
-# sudo rm -rf /usr/local/share/libsedml
-# sudo rm -rf /usr/local/include/sedml
-# sudo rm -rf /usr/local/lib/libsedml*
-# sudo rm /usr/local/share/java/libsedmlj.jar
-# sudo rm /usr/local/lib/python2.7/site-packages/libsedml/_libsedml.so
-# sudo rm /usr/local/lib/python2.7/site-packages/libsedml.pth
-# sudo rm /usr/local/lib/python2.7/site-packages/libsedml/libsedml.py
-# sudo rm /etc/profile.d/libnuml.sh
-# sudo rm /etc/profile.d/libsedml.sh
+sudo rm -rf /usr/local/include/combine/
+sudo rm -rf /usr/local/include/omex/
+sudo rm -rf /usr/local/lib/libCombine*
+sudo rm -rf /usr/local/lib/libcombine*
+sudo rm -rf /usr/local/share/java/libcombine.jar
+sudo rm -rf /usr/local/lib/python2.7/site-packages/libcombine/
+sudo rm /usr/local/lib/python2.7/site-packages/libcombine.pth
+
 
 # installation
 sudo make install
@@ -85,3 +81,17 @@ sudo make install
 echo "--------------------------------------"
 echo "python bindings"
 echo "--------------------------------------"
+# add a file with the path settings to /etc/profile.d
+echo "Adding to PYTHONPATH: /usr/local/lib/python2.7/site-packages/libcombine"
+cat > libcombine.sh << EOF0
+#!/bin/bash
+export PYTHONPATH=\$PYTHONPATH:/usr/local/lib/python2.7/site-packages/libcombine
+EOF0
+sudo mv libcombine.sh /etc/profile.d/
+source /etc/profile.d/libcombine.sh
+
+# test import
+python << END
+import libcombine
+END
+
