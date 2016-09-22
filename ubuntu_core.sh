@@ -125,7 +125,7 @@ sudo -E pip install nose coverage mock --upgrade
 sudo -E pip install sklearn --upgrade
 sudo -E pip install palettable --upgrade
 sudo -E pip install pyreadline --upgrade
-sudo -E pip install pyexcel --upgrade
+sudo -E pip install pyexcel pyexcel-xlsx --upgrade
 
 
 # virtual environment
