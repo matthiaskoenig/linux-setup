@@ -1,4 +1,6 @@
 # Linux setup
+[![Build Status](https://travis-ci.org/matthiaskoenig/linux-setup.svg?branch=master)](https://travis-ci.org/matthiaskoenig/linux-setup)
+
 For the reproducibility of scientific analysis, for providing identical development and execution environments across multiple computers and for the setup of testing and execution environments within continuous integration (travis) it is necessary to provide setup scripts for the envoronment.
 
 This repository provides the necessary setup scripts to create the core COMBINE libraries with their python bindings on linux systems.
