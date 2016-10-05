@@ -1,0 +1,18 @@
+sudo: required
+cache:
+  directories:
+    - $HOME/.cache/pip
+branches:
+  only:
+    - master
+
+
+# TODO: too much log files, reduce
+before_install:
+  - (git clone https://github.com/matthiaskoenig/linux-setup.git && cd linux-setup)
+  - (cd linux-setup/scripts && sudo ./combine.sh)
+
+# command to run tests
+script: echo "Finished Setup"
+# TODO: run the tests
+
