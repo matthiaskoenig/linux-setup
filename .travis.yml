@@ -1,0 +1,15 @@
+sudo: required
+cache:
+  directories:
+    - $HOME/.cache/pip
+branches:
+  only:
+    - master
+
+
+before_install:
+  - (git clone https://github.com/matthiaskoenig/linux-setup.git && cd linux-setup)
+  - (cd linux-setup && sudo ./simulation.sh)
+
+# command to run tests
+script: echo "Finished Setup"
