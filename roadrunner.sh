@@ -49,7 +49,6 @@ else
 	git clone https://github.com/sys-bio/libroadrunner-deps.git $ROADRUNNER_DEPS
     cd ${GIT_DIR}/$ROADRUNNER_DEPS
 fi
-# git checkout d6844db999a6064ec
 git checkout master
 echo "*commit*"
 git rev-parse HEAD
@@ -69,8 +68,7 @@ fi
 # checkout release tag or version to build
 # git tag -l
 cd ${GIT_DIR}/$ROADRUNNER
-# git checkout tags/1.4.1
-# git checkout fa351b1ee0bdf4
+# git checkout tags/1.4.4
 git checkout develop
 
 echo "*commit*"
