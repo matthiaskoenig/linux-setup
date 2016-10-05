@@ -59,3 +59,7 @@ Spyder IDE installation
 
 ## Docker
 Here docker container for the projects are defined reusing the defined scipts from above
+
+## Changelog
+*v0.1*
+- initial release
