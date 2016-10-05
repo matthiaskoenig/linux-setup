@@ -7,9 +7,12 @@ branches:
     - master
 
 
+# TODO: too much log files, reduce
 before_install:
   - (git clone https://github.com/matthiaskoenig/linux-setup.git && cd linux-setup)
-  - (cd linux-setup && sudo ./simulation.sh)
+  - (cd linux-setup/scripts && sudo ./combine.sh)
 
 # command to run tests
 script: echo "Finished Setup"
+# TODO: run the tests
+
