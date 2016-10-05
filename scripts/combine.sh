@@ -4,18 +4,17 @@
 #
 # This builds all the libraries from the c++ source
 # and installs the respective python SWIG interfaces.
-#
-# @author: Matthias König
 ############################################################
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd ${DIR}
 
+# directory for log files
 LOGS_DIR=${DIR}/logs
 if ! [ -d "${LOGS_DIR}" ]; then
 	mkdir ${LOGS_DIR}
 fi
 
-cd ${DIR}
 ./ubuntu_base.sh 2>&1 | tee ${LOGS_DIR}/ubuntu_base.log
 ./libsbml.sh 2>&1 | tee ${LOGS_DIR}/libsbml.log
 # ./libcellml.sh 2>&1 | tee ${LOGS_DIR}/libcellml.log
