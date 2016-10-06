@@ -6,15 +6,17 @@
 FROM ubuntu:14.04
 MAINTAINER Matthias Koenig <konigmatt@googlemail.com>
 RUN apt-get -y update
+RUN apt-get -y install git
 
 
 # checkout the linux-setup repo
 RUN git clone https://github.com/matthiaskoenig/linux-setup
-# run the combine script
-RUN (cd linux-setup/scripts && ./combine.sh)
+WORKDIR linux-setup/scripts
+
+# run ubuntu base installation
+RUN ./ubuntu_base.sh
 RUN ls
-WORKDIR linux-setup
-RUN ls
+
 
 # defining environment variables
 # ENV

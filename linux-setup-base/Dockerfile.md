@@ -10,6 +10,16 @@ Important arguments for docker
 * `-e` : send environment variables to container
 * `-net=host` : use host network settings
 
+Problems with DNS server in images:
+http://stackoverflow.com/questions/24991136/docker-build-could-not-resolve-archive-ubuntu-com-apt-get-fails-to-install-a
+http://unix.stackexchange.com/questions/28941/what-dns-servers-am-i-using
+
+nmcli dev show | grep DNS
+
+in /etc/default/docker
+DOCKER_OPTS="--dns 172.30.0.1"
+
+
 Name the image
 ```
 docker create --name="awesome-service" ubuntu:latest

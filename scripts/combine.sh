@@ -15,7 +15,6 @@ if ! [ -d "${LOGS_DIR}" ]; then
 	mkdir ${LOGS_DIR}
 fi
 
-./ubuntu_base.sh 2>&1 | tee ${LOGS_DIR}/ubuntu_base.log
 ./libsbml.sh 2>&1 | tee ${LOGS_DIR}/libsbml.log
 # ./libcellml.sh 2>&1 | tee ${LOGS_DIR}/libcellml.log
 ./libsedml.sh 2>&1 | tee ${LOGS_DIR}/libsedml.log

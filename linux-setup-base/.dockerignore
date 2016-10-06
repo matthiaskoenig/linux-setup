@@ -1,0 +1,3 @@
+# files excluded from upload to docker host
+README.md
+Dockerfile.md
