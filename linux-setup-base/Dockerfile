@@ -9,6 +9,7 @@ MAINTAINER Matthias Koenig <konigmatt@googlemail.com>
 RUN apt-get -y update
 RUN apt-get -y upgrade
 RUN apt-get -y install git
+RUN apt-get -y install sudo
 
 # checkout the linux-setup repo
 RUN git clone https://github.com/matthiaskoenig/linux-setup
@@ -17,3 +18,5 @@ RUN git clone https://github.com/matthiaskoenig/linux-setup
 WORKDIR linux-setup/scripts
 RUN ./ubuntu_base.sh
 WORKDIR /
+
+RUN rm -rf /var/lib/apt/lists/*

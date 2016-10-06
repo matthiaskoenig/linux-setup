@@ -1,8 +1,6 @@
 #!/bin/bash
 ############################################################
-# 
-# Setup of basic requirements for the simulation stack
-# 
+# Setup of basic requirements for simulation stack
 ############################################################
 date
 echo "*** create and delete directories ***"
