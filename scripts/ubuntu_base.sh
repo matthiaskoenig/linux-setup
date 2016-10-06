@@ -10,9 +10,6 @@ mkdir $HOME/git
 mkdir $HOME/svn
 
 # Update system
-sudo apt-get -y update
-sudo apt-get -y upgrade
-
 sudo apt-get -y install software-properties-common
 
 # Install OS dependencies

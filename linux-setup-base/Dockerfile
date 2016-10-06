@@ -5,7 +5,9 @@
 
 FROM ubuntu:14.04
 MAINTAINER Matthias Koenig <konigmatt@googlemail.com>
+
 RUN apt-get -y update
+RUN apt-get -y upgrade
 RUN apt-get -y install git
 
 

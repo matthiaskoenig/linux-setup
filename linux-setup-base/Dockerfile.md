@@ -82,4 +82,4 @@ console.log('Assuming that I am running in development');
 }
 
 # How to build the container?
-docker build -t linux-setup:v0.1.1-SNAPSHOT . 
+docker build --no-cache -t linux-setup:v0.1.1-SNAPSHOT . 
