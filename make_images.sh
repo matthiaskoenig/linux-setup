@@ -20,19 +20,17 @@ cd ${DIR}
 
 # build latest `linux-setup-base` image
 DOCKER_BASE=linux-setup-base
-docker build -t ${DOCKER_BASE} ./${DOCKER_BASE}
+docker build -t ${OWNER}/${DOCKER_BASE} ./${DOCKER_BASE}
 
-##tag the latest stack image with the HEAD git SHA
-docker tag -f ${DOCKER_BASE}:latest ${DOCKER_BASE}:${GIT_MASTER_HEAD_SHA}
+# tag the latest stack image with the HEAD git SHA
+docker tag ${OWNER}/${DOCKER_BASE}:latest ${OWNER}/${DOCKER_BASE}:${GIT_MASTER_HEAD_SHA}
+
+# created images can be viewed with:
+# docker images
 
 # TODO: test
 
-# TODO: push to docker hub
+# push to docker hub
+docker push ${OWNER}/${DOCKER_BASE}:latest
+docker push ${OWNER}/${DOCKER_BASE}:$(GIT_MASTER_HEAD_SHA)
 
-# Use commit for tagging
-
-
-# docker push $(OWNER)/$(notdir $@):latest
-# docker push $(OWNER)/$(notdir $@):$(GIT_MASTER_HEAD_SHA)
-
-# 032014150ae6

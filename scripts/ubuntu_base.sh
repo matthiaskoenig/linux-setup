@@ -3,11 +3,12 @@
 # Setup of basic requirements for simulation stack
 ############################################################
 date
+
 echo "*** create and delete directories ***"
 mkdir $HOME/git
 mkdir $HOME/svn
 
-# Update system
+# install add-apt-repository
 sudo apt-get -y install software-properties-common
 
 # Install OS dependencies
@@ -35,6 +36,7 @@ sudo apt-get -y install python-dev python-pip
 sudo apt-get -y install pandoc pandoc-citeproc
 sudo apt-get -y install python-tk
 
+sudo pip install pip --upgrade
 sudo pip install Cython --upgrade
 sudo pip install numpy --upgrade
 sudo pip install scipy --upgrade
