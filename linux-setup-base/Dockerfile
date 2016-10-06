@@ -3,7 +3,7 @@
 # This allows to run the tests with the given docker image 
 # which is much faster than rebuilding from source all the time.
 
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Matthias Koenig <konigmatt@googlemail.com>
 
 RUN apt-get -y update
@@ -15,5 +15,5 @@ RUN git clone https://github.com/matthiaskoenig/linux-setup
 
 # run ubuntu base installation
 WORKDIR linux-setup/scripts
-RUN ./linux-setup/scripts/ubuntu_base.sh
+RUN ./ubuntu_base.sh
 WORKDIR /
