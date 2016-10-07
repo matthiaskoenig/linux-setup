@@ -8,6 +8,10 @@ for the setup of testing and execution environments within continuous
 integration (travis) it is necessary to provide setup scripts for 
 the environment.
 
+The corresponding docker images are available from
+https://hub.docker.com/r/matthiaskoenig/linux-setup-base/
+
+
 **linux-setup** are a collection of shell scripts for the setup of 
 a linux environment for numerical simulations. The scripts have been
 tested with Ubuntu LTS 16.04 and LTS 14.04. 
