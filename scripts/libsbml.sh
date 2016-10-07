@@ -30,8 +30,9 @@ fi
 echo "---------------------------------------"
 echo "install libsbml dependencies"
 echo "---------------------------------------"
+sudo apt-get update
 sudo apt-get -y install subversion cmake cmake-gui swig libxml2 libxml2-dev libbz2-dev zlib1g-dev
-rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+
 
 echo "--------------------------------------"
 echo "pull libsbml repository"
