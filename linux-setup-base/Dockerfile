@@ -27,6 +27,7 @@ WORKDIR $HOME/linux-setup/scripts
 RUN mkdir logs
 
 RUN ./ubuntu_base.sh 2>&1 | tee logs/ubuntu_base.log && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf $HOME/.cache
 
 WORKDIR $HOME
