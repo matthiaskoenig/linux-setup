@@ -30,7 +30,8 @@ fi
 echo "---------------------------------------"
 echo "install libsbml dependencies"
 echo "---------------------------------------"
-sudo apt-get -y install cmake cmake-gui swig libxml2 libxml2-dev libbz2-dev zlib1g-dev
+sudo apt-get -y install subversion cmake cmake-gui swig libxml2 libxml2-dev libbz2-dev zlib1g-dev
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 echo "--------------------------------------"
 echo "pull libsbml repository"
@@ -56,7 +57,9 @@ mkdir $LIBSBML_BUILD
 # here are the cmake files
 cd $LIBSBML_BUILD
 cmake -DWITH_BZIP2=OFF -DWITH_ZLIB=OFF -DENABLE_COMP=ON -DENABLE_FBC=ON -DENABLE_LAYOUT=ON -ENABLE_GROUPS -DENABLE_QUAL=ON -DWITH_EXAMPLES=ON -DWITH_PYTHON=ON -DWITH_R=ON ${SVN_DIR}/$SBMLCODE/libsbml
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 make -j8
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 echo "--------------------------------------"
 echo "install libsbml"
@@ -71,6 +74,7 @@ sudo rm -rf /usr/local/lib/python2.7/site-packages/libsbml
 
 # installation
 sudo make -j8 install
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 echo "--------------------------------------"
 echo "python bindings"

@@ -19,10 +19,10 @@ RUN apt-get -y install git
 RUN git clone https://github.com/matthiaskoenig/linux-setup
 
 # run ubuntu base installation
-WORKDIR /home/linux-setup/scripts
+WORKDIR /$HOME/linux-setup/scripts
 RUN mkdir logs
 RUN ./ubuntu_base.sh 2>&1 | tee logs/ubuntu_base.log
-WORKDIR /home
+WORKDIR /$HOME
 
 # clean the container
 RUN rm -rf /var/lib/apt/lists/*
