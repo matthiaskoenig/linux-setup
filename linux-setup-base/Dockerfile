@@ -1,13 +1,15 @@
 FROM ubuntu:16.04
 MAINTAINER Matthias Koenig <konigmatt@googlemail.com>
 
-RUN apt-get -y update
-RUN apt-get -y install apt-utils
-RUN apt-get -y install software-properties-common
-RUN apt-get -y install sudo
-RUN apt-get -y upgrade
+# basic apt-tools & upgrade
+RUN apt-get -y update && \
+    apt-get -y install apt-utils && \
+    apt-get -y install software-properties-common && \
+    apt-get -y install sudo && \
+    apt-get -y upgrade && \
+    rm -rf /var/lib/apt/lists/*
 
-# Install oracle-java8
+# install oracle-java8
 RUN \
   echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
   add-apt-repository -y ppa:webupd8team/java && \
@@ -18,6 +20,7 @@ RUN \
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # install ubuntu base from linux-setup repository
+# uses the ./ubuntu_base.sh script for installation
 RUN apt-get -y install git
 ENV HOME /home
 WORKDIR $HOME
