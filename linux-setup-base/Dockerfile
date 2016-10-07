@@ -7,14 +7,14 @@ FROM ubuntu:16.04
 MAINTAINER Matthias Koenig <konigmatt@googlemail.com>
 
 RUN apt-get -y update
-RUN apt-get -y upgrade
-RUN apt-get -y install git
 RUN apt-get -y install sudo apt-utils
+RUN apt-get -y upgrade
 
 # all installation files are in the /home subdirectory
 WORKDIR /home
 
 # checkout the linux-setup repo
+RUN apt-get -y install git
 RUN git clone https://github.com/matthiaskoenig/linux-setup
 
 # run ubuntu base installation
