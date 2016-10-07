@@ -7,7 +7,8 @@ FROM ubuntu:16.04
 MAINTAINER Matthias Koenig <konigmatt@googlemail.com>
 
 RUN apt-get -y update
-RUN apt-get -y install sudo apt-utils
+RUN apt-get -y install apt-utils
+RUN apt-get -y install sudo
 RUN apt-get -y upgrade
 
 # all installation files are in the /home subdirectory
