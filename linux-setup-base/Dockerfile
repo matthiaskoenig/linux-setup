@@ -11,11 +11,22 @@ RUN apt-get -y install apt-utils
 RUN apt-get -y install sudo
 RUN apt-get -y upgrade
 
+# Install oracle-java8
+RUN \
+  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  add-apt-repository -y ppa:webupd8team/java && \
+  apt-get update && \
+  apt-get install -y oracle-java8-installer && \
+  rm -rf /var/lib/apt/lists/* && \
+
+# Define commonly used JAVA_HOME variable
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+
 # all installation files are in the /home subdirectory
-WORKDIR /$HOME
 
 # checkout the linux-setup repo
 RUN apt-get -y install git
+WORKDIR /$HOME
 RUN git clone https://github.com/matthiaskoenig/linux-setup
 
 # run ubuntu base installation
