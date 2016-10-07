@@ -7,7 +7,7 @@
 # 	./libsbml.sh 2>&1 | tee ./logs/libsbml.log
 #
 # @author: Matthias Koenig
-# @date: 2016-01-07
+# @date: 2016-10-07
 ############################################################
 date
 echo "--------------------------------------"
@@ -94,5 +94,13 @@ source /etc/profile.d/libsbml.sh
 
 # test python bindings
 cd $DIR
-./libsbml_test.py
+../tests/libsbml.py
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+
+echo "--------------------------------------"
+echo "R bindings"
+echo "--------------------------------------"
+sudo R CMD INSTALL $LIBSBML_BUILD/src/bindings/r/libSBML_*_R_x86_64-pc-linux-gnu.tar.gz
+../tests/libsbml.R
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
