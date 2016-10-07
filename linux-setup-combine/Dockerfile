@@ -14,5 +14,7 @@ RUN ./combine.sh
 WORKDIR /$HOME
 
 # clean the container
+RUN rm -rf /$HOME/git
+RUN rm -rf /$HOME/svn
+# RUN rm -rf /$HOME/tmp
 RUN rm -rf /var/lib/apt/lists/*
-RUN rm -rf /var/cache/oracle-jdk8-installer
