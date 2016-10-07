@@ -42,7 +42,7 @@ echo "$GIT_DIR/$NUMLCODE"
 if [ -d "$GIT_DIR/$NUMLCODE" ]; then
 	cd $GIT_DIR/$NUMLCODE
 	git pull
-    git checkout 46558fcea3d
+    # git checkout 46558fcea3d
 else
 	cd $GIT_DIR
 	git clone https://github.com/NuML/NuML.git $NUMLCODE

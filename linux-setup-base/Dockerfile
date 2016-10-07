@@ -25,4 +25,7 @@ RUN ./ubuntu_base.sh 2>&1 | tee logs/ubuntu_base.log
 WORKDIR /$HOME
 
 # clean the container
+RUN rm -rf /$HOME/git
+RUN rm -rf /$HOME/svn
+RUN rm -rf /$HOME/tmp
 RUN rm -rf /var/lib/apt/lists/*

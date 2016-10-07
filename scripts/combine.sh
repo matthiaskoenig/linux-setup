@@ -16,11 +16,11 @@ if ! [ -d "${LOGS_DIR}" ]; then
 fi
 
 ./libsbml.sh 2>&1 | tee ${LOGS_DIR}/libsbml.log
+# ./libcellml.sh 2>&1 | tee ${LOGS_DIR}/libcellml.log
+./libsedml.sh 2>&1 | tee ${LOGS_DIR}/libsedml.log
 
 : <<'END'
 
-# ./libcellml.sh 2>&1 | tee ${LOGS_DIR}/libcellml.log
-./libsedml.sh 2>&1 | tee ${LOGS_DIR}/libsedml.log
 ./roadrunner-deps.sh 2>&1 | tee ${LOGS_DIR}/roadrunner-deps.log
 ./roadrunner.sh 2>&1 | tee ${LOGS_DIR}/roadrunner.log
 ./antimony.sh 2>&1 | tee ${LOGS_DIR}/antimony.log
