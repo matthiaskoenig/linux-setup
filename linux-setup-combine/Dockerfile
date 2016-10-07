@@ -13,9 +13,7 @@ WORKDIR $HOME/linux-setup/scripts
 ENV PYTHONPATH $PYTHONPATH:/usr/local/lib/python2.7/site-packages/libsbml
 ENV PYTHONPATH $PYTHONPATH:/usr/local/lib/python2.7/site-packages/libsedml
 ENV PYTHONPATH $PYTHONPATH:/usr/local/lib/python2.7/site-packages/libcombine
-ENV PYTHONPATH $PYTHONPATH:/usr/local/lib/python2.7/site-packages/libsbml
-ENV PYTHONPATH $PYTHONPATH:/usr/local/lib/python2.7/site-packages/libsbml
-
+ENV PYTHONPATH $PYTHONPATH:/usr/local/lib/python2.7/site-packages/libnuml
 
 RUN ./combine.sh
 WORKDIR $HOME

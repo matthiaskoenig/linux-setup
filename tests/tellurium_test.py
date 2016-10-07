@@ -1,15 +1,17 @@
 #!/usr/bin/python
 ############################################################
-# Test tellurium installation/python bindings
-#
-# Usage: 
-# 	./tellurium_test.sh
-#
-# @author: Matthias Koenig
-# @date: 2016-01-15
+# Test tellurium python bindings
 ############################################################
 from __future__ import print_function, division
-import tellurium as te
+import sys
+import traceback
 
-print('tellurium', te.getVersionInfo())
+if __name__ == "__main__":
+    try:
+        import tellurium as te
+        print('tellurium', te.getVersionInfo())
+        sys.exit(0)
 
+    except:
+        traceback.print_exc()
+        sys.exit(1)
