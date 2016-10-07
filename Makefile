@@ -1,4 +1,4 @@
-################################################### 
+#################################################################
 # Makefile for docker images.
 #
 # Handles the image creation, tagging, testing,
@@ -7,9 +7,7 @@
 # Inspired by
 # https://github.com/jupyter/docker-stacks/blob/master/Makefile
 #
-# Copyright (c) Matthias Koenig
 # Distributed under LGPLv3
-#
 #
 # To build a single image use
 # 	make refresh/linux-setup-*
@@ -18,11 +16,13 @@
 # 	make tag/linux-setup-*
 # 	make push/linux-setup-*
 #
-# To build and update all images use (with authentication)
+# To build and update all images use (with authentication):
+#   git push
 #   docker login
 #   make release-all
-#
-###################################################
+# Make sure all the changes are pushed to the repository,
+# otherwise the build will be outdated.
+#################################################################
 
 # special targets not associated with files
 .PHONY: build-all help release-all
@@ -32,9 +32,9 @@ SHELL:=bash
 OWNER:=matthiaskoenig
 
 # need to list these manually because there's a dependency tree
-ALL_STACKS:=linux-setup-base \
-	linux-setup-combine \
-	linux-setup-notebook
+ALL_STACKS:=linux-setup-base #\
+	# linux-setup-combine \
+	# linux-setup-notebook
 
 ALL_IMAGES:=$(ALL_STACKS)
 

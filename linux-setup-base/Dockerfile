@@ -11,14 +11,17 @@ RUN apt-get -y upgrade
 RUN apt-get -y install git
 RUN apt-get -y install sudo
 
+# all installation files are in the /home subdirectory
+WORKDIR /home
+
 # checkout the linux-setup repo
 RUN git clone https://github.com/matthiaskoenig/linux-setup
 
 # run ubuntu base installation
-WORKDIR linux-setup/scripts
+WORKDIR /home/linux-setup/scripts
 RUN mkdir logs
 RUN ./ubuntu_base.sh 2>&1 | tee logs/ubuntu_base.log
-WORKDIR /
+WORKDIR /home
 
 # clean the container
 RUN rm -rf /var/lib/apt/lists/*
