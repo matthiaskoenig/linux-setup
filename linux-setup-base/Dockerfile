@@ -26,6 +26,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # checkout the linux-setup repo
 RUN apt-get -y install git
+ENV HOME /home
 WORKDIR $HOME
 RUN git clone https://github.com/matthiaskoenig/linux-setup
 

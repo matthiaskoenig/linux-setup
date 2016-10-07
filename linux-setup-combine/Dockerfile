@@ -3,7 +3,6 @@ MAINTAINER Matthias Koenig <konigmatt@googlemail.com>
 
 
 # get latest changes from linux-setup
-ENV HOME /home
 WORKDIR $HOME/linux-setup
 RUN git pull
 
