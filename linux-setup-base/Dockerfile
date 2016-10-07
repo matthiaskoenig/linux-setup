@@ -12,7 +12,7 @@ RUN apt-get -y install sudo
 RUN apt-get -y upgrade
 
 # all installation files are in the /home subdirectory
-WORKDIR /home
+WORKDIR /$HOME
 
 # checkout the linux-setup repo
 RUN apt-get -y install git

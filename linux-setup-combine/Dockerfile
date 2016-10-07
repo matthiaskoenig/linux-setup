@@ -3,6 +3,7 @@ MAINTAINER Matthias Koenig <konigmatt@googlemail.com>
 
 # get the latest changes from linux-setup
 WORKDIR /$HOME/linux-setup
+ls
 RUN git pull
 
 # run ubuntu base installation
