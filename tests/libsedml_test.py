@@ -15,6 +15,6 @@ if __name__ == "__main__":
 
         sys.exit(0)
 
-    except Exception:
+    except:
         traceback.print_exc()
         sys.exit(1)
