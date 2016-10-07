@@ -1,12 +1,13 @@
 FROM matthiaskoenig/linux-setup-base:latest
 MAINTAINER Matthias Koenig <konigmatt@googlemail.com>
 
-
-# checkout the linux-setup repo
-RUN git clone https://github.com/matthiaskoenig/linux-setup
+# get the latest changes from linux-setup
+WORKDIR linux-setup
+RUN git pull
 
 # run ubuntu base installation
 WORKDIR linux-setup/scripts
+RUN ls
 RUN ./combine.sh
 WORKDIR /
 

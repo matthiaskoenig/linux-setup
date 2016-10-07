@@ -39,7 +39,8 @@ help:
 
 build/%: DARGS?=
 build/%: ## build the latest image for a stack
-	docker build $(DARGS) --rm --force-rm -t $(OWNER)/$(notdir $@):latest ./$(notdir $@)
+#	docker build $(DARGS) --rm --force-rm -t $(OWNER)/$(notdir $@):latest ./$(notdir $@)
+	docker build $(DARGS) --no-cache --rm --force-rm -t $(OWNER)/$(notdir $@):latest ./$(notdir $@)
 
 build-all: $(ALL_IMAGES:%=build/%) ## build all stacks
 
