@@ -8,6 +8,7 @@ MAINTAINER Matthias Koenig <konigmatt@googlemail.com>
 
 RUN apt-get -y update
 RUN apt-get -y install apt-utils
+sudo apt-get -y install software-properties-common
 RUN apt-get -y install sudo
 RUN apt-get -y upgrade
 
