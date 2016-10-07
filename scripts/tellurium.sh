@@ -74,6 +74,9 @@ echo "install tellurium"
 echo "--------------------------------------"
 sudo python setup.py install
 
-# TODO: test
-
+echo "--------------------------------------"
+echo "test tellurium"
+echo "--------------------------------------"
+cd $DIR
+../tests/tellurium_test.py
 

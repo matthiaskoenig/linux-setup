@@ -26,7 +26,6 @@ sudo apt-get install git libxml2-dev
 sudo -E pip install numpy --upgrade
 sudo -E pip install scipy --upgrade
 
-
 echo "install LLVM 3.5.2"
 LLVM=llvm
 LLVM_VERSION=3.5.2

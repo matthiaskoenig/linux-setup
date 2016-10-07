@@ -10,9 +10,6 @@
 #
 # To select a branch/tag/commit to build from change the
 # checkout command for roadrunner.
-#
-# @author: Matthias Koenig
-# @date: 2016-09-08
 ############################################################
 date
 echo "--------------------------------------"
@@ -83,4 +80,4 @@ echo "--------------------------------------"
 echo "roadrunner tests"
 echo "--------------------------------------"
 cd $DIR
-./roadrunner_test.py
+../tests/roadrunner_test.py
