@@ -1,6 +1,9 @@
 #!/bin/bash
 ############################################################
 # Setup of basic requirements for simulation stack
+#
+# Usage:
+# 	./ubuntu_base.sh 2>&1 | tee ./logs/ubuntu_base.log
 ############################################################
 date
 
@@ -29,7 +32,7 @@ sudo apt-get -y remove cmake cmake-gui
 sudo apt-get -y install cmake cmake-qt-gui
 
 # R
-sudo -E apt-get -y install r-base-core r-base r-base-dev r-recommended
+sudo apt-get -y install r-base-core r-base r-base-dev r-recommended
 
 # python
 sudo apt-get -y install python-dev python-pip

@@ -6,7 +6,6 @@
 # Usage: 
 # 	./zipper.sh 2>&1 | tee ./logs/zipper.log
 #
-# Depends on Zipper library
 ############################################################
 date
 echo "--------------------------------------"

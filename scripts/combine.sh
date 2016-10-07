@@ -4,6 +4,9 @@
 #
 # This builds all the libraries from the c++ source
 # and installs the respective python SWIG interfaces.
+#
+# Usage:
+#   ./combine.sh
 ############################################################
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )

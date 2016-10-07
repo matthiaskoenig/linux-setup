@@ -6,7 +6,7 @@
 # Usage: 
 # 	./libCombine.sh 2>&1 | tee ./logs/libCombine.log
 #
-# Depens on Zipper library
+# Depends on Zipper library
 ############################################################
 date
 echo "--------------------------------------"

@@ -1,22 +1,18 @@
 #!/bin/bash
 ############################################################
-# Core Ubuntu setup after installation
-# Usage
-# 	sudo apt-get install git
-# 	GIT_DIR=$HOME/git
-# 	mkdir $GIT_DIR
-# 	cd $GIT_DIR
+# Core Ubuntu setup after clean installation.
 #
-# 	git clone https://github.com/matthiaskoenig/linux-setup
-#   cd linux-setup
-#	mkdir logs
-#	./ubuntu_core.sh 2>&1 | tee ./logs/ubuntu_core.log
+# This is used on clean Ubuntu computers which should be
+# used as workstation
 #
-# @author: Matthias Koenig
-# @date: 2016-01-06
+# Usage:
+#   ./ubuntu_core.sh
 #
-# Issues
-# - how to sudo with password?
+# Subsequent installation:
+#   ./ubuntu_base.sh
+#   ./combine.sh
+#
+# TODO: remove redundancies between ubuntu_core & ubuntu_base
 ############################################################
 date
 echo "*** create and delete directories ***"
@@ -86,9 +82,13 @@ sudo -E apt-get -y install r-base-core r-base r-base-dev r-recommended libcurl4-
 echo "*** Java ***"
 # remove openjdk
 sudo apt-get -y purge openjdk*
-sudo -E add-apt-repository -y ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install -y oracle-java8-installer
+# install oracle-java8
+echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  add-apt-repository -y ppa:webupd8team/java && \
+  apt-get update && \
+  apt-get install -y oracle-java8-installer && \
+  rm -rf /var/cache/oracle-jdk8-installer
+
 # switch java alternatives
 sudo update-java-alternatives -s java-8-oracle
 java -version
@@ -109,7 +109,6 @@ sudo -E add-apt-repository -y ppa:george-edison55/cmake-3.x
 sudo -E apt-get update
 sudo -E apt-get -y install cmake cmake-qt-gui
 
-
 echo "-----------------------------------------"
 echo "Python dependencies"
 echo "-----------------------------------------"
@@ -126,7 +125,6 @@ sudo -E pip install sklearn --upgrade
 sudo -E pip install palettable --upgrade
 sudo -E pip install pyreadline --upgrade
 sudo -E pip install pyexcel pyexcel-xlsx --upgrade
-
 
 # virtual environment
 sudo -E pip install virtualenv --upgrade
