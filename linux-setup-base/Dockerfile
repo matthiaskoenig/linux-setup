@@ -9,7 +9,7 @@ MAINTAINER Matthias Koenig <konigmatt@googlemail.com>
 RUN apt-get -y update
 RUN apt-get -y upgrade
 RUN apt-get -y install git
-RUN apt-get -y install sudo
+RUN apt-get -y install sudo apt-utils
 
 # all installation files are in the /home subdirectory
 WORKDIR /home
