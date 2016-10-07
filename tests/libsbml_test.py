@@ -4,18 +4,14 @@
 ############################################################
 from __future__ import print_function, division
 import sys
-
-
-def test():
-    """
-    Test libsbml import and call of function.
-    :return:
-    """
-    import libsbml
-    print('libsbml', libsbml.getLibSBMLDottedVersion())
+import traceback
 
 if __name__ == "__main__":
     try:
-        test()
-    except:
+        import libsbml
+        print('libsbml', libsbml.getLibSBMLDottedVersion())
+        sys.exit(0)
+
+    except Exception:
+        traceback.print_exc()
         sys.exit(1)

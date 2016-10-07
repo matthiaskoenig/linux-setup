@@ -150,5 +150,5 @@ source /etc/profile.d/libsedml.sh
 
 # testing
 cd $DIR
-../tests/libsedml.py
+../tests/libsedml_test.py
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi

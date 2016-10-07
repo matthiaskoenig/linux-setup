@@ -94,7 +94,7 @@ source /etc/profile.d/libsbml.sh
 
 # test python bindings
 cd $DIR
-../tests/libsbml.py
+../tests/libsbml_test.py
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 echo "--------------------------------------"
