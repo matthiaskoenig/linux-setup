@@ -1,4 +1,5 @@
 # Configure environment
+# necessary adaption to get notebook running
 ENV NB_USER combine
 ENV NB_UID 1000
 ENV HOME /home/$NB_USER

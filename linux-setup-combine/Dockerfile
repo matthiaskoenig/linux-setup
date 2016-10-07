@@ -1,7 +1,6 @@
 FROM matthiaskoenig/linux-setup-base:latest
 MAINTAINER Matthias Koenig <konigmatt@googlemail.com>
 
-
 # get latest changes from linux-setup
 WORKDIR $HOME/linux-setup
 RUN git pull
