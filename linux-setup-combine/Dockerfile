@@ -7,7 +7,8 @@ RUN git pull
 
 # run ubuntu base installation
 WORKDIR linux-setup/scripts
-RUN ls
+RUN pwd
+RUN ls -al
 RUN ./combine.sh
 WORKDIR /
 

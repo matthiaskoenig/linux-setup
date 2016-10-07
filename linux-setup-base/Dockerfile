@@ -17,7 +17,7 @@ RUN git clone https://github.com/matthiaskoenig/linux-setup
 # run ubuntu base installation
 WORKDIR linux-setup/scripts
 RUN mkdir logs
-RUN ./ubuntu_base.sh 2>&1 | tee logs/libsbml.log
+RUN ./ubuntu_base.sh 2>&1 | tee logs/ubuntu_base.log
 WORKDIR /
 
 # clean the container

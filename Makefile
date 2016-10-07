@@ -9,6 +9,19 @@
 #
 # Copyright (c) Matthias Koenig
 # Distributed under LGPLv3
+#
+#
+# To build a single image use
+# 	make refresh/linux-setup-*
+# 	make build/linux-setup-*
+# 	make test/linux-setup-*
+# 	make tag/linux-setup-*
+# 	make push/linux-setup-*
+#
+# To build and update all images use (with authentication)
+#   docker login
+#   make release-all
+#
 ###################################################
 
 # special targets not associated with files
@@ -46,7 +59,8 @@ build-all: $(ALL_IMAGES:%=build/%) ## build all stacks
 
 
 test/%: ## test the created image
-	exit 1
+	echo "Currently no tests performed with image"
+	exit 0
 
 test-all: $(ALL_IMAGES:%=test/%) ## test all stacks
 
@@ -62,7 +76,7 @@ refresh-all: $(ALL_IMAGES:%=refresh/%) ## refresh all stacks
 
 
 tag/%: ## tag the latest stack image with the HEAD git SHA
-	docker tag -f $(OWNER)/$(notdir $@):latest $(OWNER)/$(notdir $@):$(GIT_MASTER_HEAD_SHA)
+	docker tag $(OWNER)/$(notdir $@):latest $(OWNER)/$(notdir $@):$(GIT_MASTER_HEAD_SHA)
 
 tag-all: $(ALL_IMAGES:%=tag/%) ## tag all stacks
 
