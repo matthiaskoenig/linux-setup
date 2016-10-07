@@ -7,6 +7,12 @@
 
 # TODO: set user variable
 
+# TODO: connect GUI
+# root@core1:~# /usr/local/bin/spyder
+# No protocol specified
+# Spyder: cannot connect to X server unix:0.0
+
+
 docker run -it \
 --net host \
 --cpuset-cpus 0 \
