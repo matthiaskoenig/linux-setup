@@ -1,15 +1,17 @@
 #!/usr/bin/python
 ############################################################
-# Test antimony installation/python bindings
-#
-# Usage: 
-# 	./antimony_test.sh 2>&1 | tee ./logs/antimony_test.log
-#
-# @author: Matthias Koenig
-# @date: 2016-01-07
+# Test antimony python bindings
 ############################################################
 from __future__ import print_function, division
-import antimony
+import sys
+import traceback
 
-print(antimony.__version__)
+if __name__ == "__main__":
+    try:
+        import antimony
+        print(antimony.__version__)
+        sys.exit(0)
 
+    except Exception:
+        traceback.print_exc()
+        sys.exit(1)

@@ -5,9 +5,6 @@
 #
 # Usage: 
 # 	./antimony.sh 2>&1 | tee ./logs/antimony.log
-#
-# @author: Matthias Koenig
-# @date: 2016-01-06
 ############################################################
 date
 echo "--------------------------------------"
@@ -18,10 +15,10 @@ CODE=antimony
 ANTIMONY=antimony
 
 SVN_DIR=$HOME/svn
-TMP_DIR=$HOME/tmp
 if ! [ -d "$SVN_DIR" ]; then
 	mkdir $SVN_DIR
 fi
+TMP_DIR=$HOME/tmp
 if ! [ -d "$TMP_DIR" ]; then
 	mkdir $TMP_DIR
 fi
@@ -29,7 +26,6 @@ fi
 echo "---------------------------------------"
 echo "install dependencies"
 echo "---------------------------------------"
-
 # qt
 if lsb_release -r -s | grep -q '14.04'; then
   echo "Ubuntu 14.04"
@@ -78,9 +74,7 @@ echo "--------------------------------------"
 sudo make -j8 install
 
 echo "--------------------------------------"
-echo "test installation"
+echo "test antimony"
 echo "--------------------------------------"
 cd $DIR
-./antimony_test.py
-pip list | grep antimony
-
+../tests/antimony_test.py

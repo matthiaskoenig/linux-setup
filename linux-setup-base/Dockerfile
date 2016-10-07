@@ -26,14 +26,14 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # checkout the linux-setup repo
 RUN apt-get -y install git
-WORKDIR /$HOME
+WORKDIR $HOME
 RUN git clone https://github.com/matthiaskoenig/linux-setup
 
 # run ubuntu base installation
-WORKDIR /$HOME/linux-setup/scripts
+WORKDIR $HOME/linux-setup/scripts
 RUN mkdir logs
 RUN ./ubuntu_base.sh 2>&1 | tee logs/ubuntu_base.log
-WORKDIR /$HOME
+WORKDIR $HOME
 
 # clean the container
 RUN rm -rf /var/lib/apt/lists/*

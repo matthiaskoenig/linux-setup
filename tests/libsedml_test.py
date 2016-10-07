@@ -9,7 +9,7 @@ import traceback
 if __name__ == "__main__":
     try:
         import libnuml
-        import libsedml_test
+        import libsedml
         print('libnuml', libnuml.getLibNUMLDottedVersion())
         print('libsedml', libsedml_test.getLibSEDMLDottedVersion())
 
