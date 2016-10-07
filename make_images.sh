@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
 ##########################################################
 # Builds all the docker images.
-# The dependency tree of the images is
-#
-# linux-setup-base
-#  |
-#   --> linux-setup-combine
-#        |
-#         --> linux-setup-notebook
+
 #
 # see also: https://github.com/jupyter/docker-stacks/blob/master/Makefile
 ##########################################################

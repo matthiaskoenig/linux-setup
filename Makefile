@@ -3,25 +3,32 @@
 #
 # Handles the image creation, tagging, testing,
 # and pushing of the images to docker hub.
-#
-# Inspired by
+# This file was inspired by
 # https://github.com/jupyter/docker-stacks/blob/master/Makefile
 #
-# Distributed under LGPLv3
+# To build a single image use:
 #
-# To build a single image use
 # 	make refresh/linux-setup-*
 # 	make build/linux-setup-*
 # 	make test/linux-setup-*
 # 	make tag/linux-setup-*
 # 	make push/linux-setup-*
 #
-# To build and update all images use (with authentication):
+# To build and update all images push all changes to the repository, 
+# authenticate with docker and make the release
 #   git push
 #   docker login
 #   make release-all
-# Make sure all the changes are pushed to the repository,
-# otherwise the build will be outdated.
+#
+# The dependency tree of the docker images is
+#
+# linux-setup-base
+#  |
+#   --> linux-setup-combine
+#        |
+#         --> linux-setup-notebook
+#
+# Copyright (c) Matthias Koenig, distributed under LGPLv3.
 #################################################################
 
 # special targets not associated with files
