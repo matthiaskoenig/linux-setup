@@ -39,8 +39,8 @@ SHELL:=bash
 OWNER:=matthiaskoenig
 
 # need to list these manually because there's a dependency tree
-ALL_STACKS:=linux-setup-base #\
-	# linux-setup-combine \
+ALL_STACKS:=linux-setup-base \
+	linux-setup-combine
 	# linux-setup-notebook
 
 ALL_IMAGES:=$(ALL_STACKS)

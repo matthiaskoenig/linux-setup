@@ -12,4 +12,5 @@ services:
 script:
     - make build-test-all
 
-
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
