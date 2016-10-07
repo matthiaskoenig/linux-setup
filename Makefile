@@ -100,4 +100,3 @@ release-all: refresh-all \
 	push-all
 release-all: ## build, test, tag, and push all stacks
 
-

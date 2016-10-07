@@ -44,8 +44,8 @@ else
 	cd $SVN_DIR
 	# svn checkout http://svn.code.sf.net/p/sbml/code/trunk $SBMLCODE
 	# sparse directory checkout
-	svn checkout --depth empty http://svn.code.sf.net/p/sbml/code/trunk $SBMLCODE
-    svn update --set-depth infinity $SBMLCODE/libsbml
+	svn checkout --quiet --depth empty http://svn.code.sf.net/p/sbml/code/trunk $SBMLCODE
+    svn update --quiet --set-depth infinity $SBMLCODE/libsbml
 	cd ${SVN_DIR}/$SBMLCODE
 fi
 

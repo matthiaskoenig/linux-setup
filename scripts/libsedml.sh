@@ -8,7 +8,7 @@
 # 	./libsedml.sh 2>&1 | tee ./logs/libsedml.log
 #
 # @author: Matthias Koenig
-# @date: 2016-01-08
+# @date: 2016-10-07
 ############################################################
 date
 echo "--------------------------------------"
@@ -17,9 +17,6 @@ echo "--------------------------------------"
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 NUMLCODE=numl-code
 SEDMLCODE=sedml-code
-
-# java include folders if JAVA_HOME not yet set
-source /etc/profile.d/java.sh
 
 GIT_DIR=$HOME/git
 TMP_DIR=$HOME/tmp
