@@ -19,6 +19,8 @@ xhost +
 
 # http://stackoverflow.com/questions/25281992/alternatives-to-ssh-x11-forwarding-for-docker-containers/25334301#25334301
 # http://olivier.barais.fr/blog/posts/2014.08.26/Eclipse_in_docker_container.html
+# http://fabiorehm.com/blog/2014/09/11/running-gui-apps-with-docker/
+# http://wiki.ros.org/docker/Tutorials/GUI
 
 docker run -it \
 --net host \
@@ -27,6 +29,7 @@ docker run -it \
 -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
 -e DISPLAY=unix$DISPLAY \
 -e USER=combine \
-matthiaskoenig/linux-setup-combine spyder
+matthiaskoenig/linux-setup-combine /bin/bash # spyder
 
-xhost -
+# export containerId=$(docker ps -l -q)
+# xhost +local:`docker inspect --format='{{ .Config.Hostname }}' $containerId`
