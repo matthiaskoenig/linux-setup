@@ -12,4 +12,4 @@ RUN ./combine.sh
 WORKDIR /$HOME
 
 # clean the container
-RUN rm -rf /var/lib/apt/lists/*
+# RUN rm -rf /var/lib/apt/lists/*

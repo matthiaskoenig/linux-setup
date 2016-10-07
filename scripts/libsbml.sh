@@ -42,7 +42,10 @@ if [ -d "${SVN_DIR}/$SBMLCODE" ]; then
 	svn update
 else
 	cd $SVN_DIR
-	svn checkout http://svn.code.sf.net/p/sbml/code/trunk $SBMLCODE
+	# svn checkout http://svn.code.sf.net/p/sbml/code/trunk $SBMLCODE
+	# sparse directory checkout
+	svn checkout --depth empty http://svn.code.sf.net/p/sbml/code/trunk/sbml-code
+    svn update --set-depth infinity sbml-code/libsbml
 	cd ${SVN_DIR}/$SBMLCODE
 fi
 
