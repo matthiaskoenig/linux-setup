@@ -66,7 +66,9 @@ mkdir $NUML_BUILD
 cd $NUML_BUILD
 
 cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON ${GIT_DIR}/$NUMLCODE/libnuml
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 make -j8
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 echo "--------------------------------------"
 echo "install libnuml"
@@ -77,6 +79,7 @@ sudo rm -rf /usr/local/include/numl/
 sudo rm -rf /usr/local/lib/libnuml*
 # installation
 sudo make install
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 echo "--------------------------------------"
 echo "pull libSEDML repository"
@@ -105,7 +108,9 @@ mkdir $SEDML_BUILD
 # here are the cmake files
 cd $SEDML_BUILD
 cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON ${GIT_DIR}/$SEDMLCODE
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 make -j8
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 echo "--------------------------------------"
 echo "install libSEDML"
@@ -123,6 +128,7 @@ sudo rm /etc/profile.d/libsedml.sh
 
 # installation
 sudo make install
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 echo "--------------------------------------"
 echo "python bindings"
@@ -145,6 +151,7 @@ EOF2
 sudo mv libsedml.sh /etc/profile.d/
 source /etc/profile.d/libsedml.sh
 
+# testing
 cd $DIR
-./libsedml_test.py
-
+../tests/libsedml.py
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
