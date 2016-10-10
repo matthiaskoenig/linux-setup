@@ -14,6 +14,6 @@ if __name__ == "__main__":
         print('libsedml', libsedml.getLibSEDMLDottedVersion())
 
         sys.exit(0)
-    except:
+    except Exception:
         traceback.print_exc()
         sys.exit(1)
