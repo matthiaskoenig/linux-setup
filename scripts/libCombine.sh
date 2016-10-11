@@ -91,7 +91,5 @@ sudo mv libcombine.sh /etc/profile.d/
 source /etc/profile.d/libcombine.sh
 
 # test import
-python << END
-import libcombine
-END
+
 
