@@ -16,7 +16,6 @@ ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:$HOME/temp/cellml-sdk-1.12-Linux-x86_64/lib
 # run ubuntu base installation
 WORKDIR $HOME/linux-setup/scripts
 
-
 RUN ./combine.sh && \
     rm -rf $HOME/git && \
     rm -rf $HOME/svn && \

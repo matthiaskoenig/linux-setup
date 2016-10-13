@@ -31,5 +31,7 @@ fi
 ./libcombine.sh 2>&1 | tee ${LOGS_DIR}/libcombine.log
 
 ./sbml2matlab.sh 2>&1 | tee ${LOGS_DIR}/sbml2matlab.log
-./tellurium.sh 2>&1 | tee ${LOGS_DIR}/tellurium.log
 ./spyder.sh 2>&1 | tee ${LOGS_DIR}/spyder.log
+
+# ./tellurium.sh 2>&1 | tee ${LOGS_DIR}/tellurium.log
+
