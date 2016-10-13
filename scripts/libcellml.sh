@@ -15,14 +15,17 @@ if ! [ -d "$TMP_DIR" ]; then
 fi
 
 
-CELLML_DIR=${TMP_DIR}/${VERSION}
-if ! [ -d "$CELLML_DIR" ]; then
-	mkdir $CELLML_DIR
-fi
+cd ${TMP_DIR}
 
-cd TMP_DIR
+wget https://sourceforge.net/projects/cellml-api/files/CellML-API-Nightly/1.12/20121031/linux-x86_64/${VERSION}.tar.bz2/download
+mv download ${VERSION}.tar.bz2
+tar jxfv ${VERSION}.tar.bz2 
 
-
-wget https://sourceforge.net/projects/cellml-api/files/CellML-API-Nightly/1.12/20121031/linux-x86_64/${VERSION}.tar.bz2/download ${VERSION}
-
+echo "Adding to LD_LIBRARY_PATH: ${TMP_DIR}/${VERSION}/lib"
+cat > libcellml.sh << EOF0
+#!/bin/bash
+export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:${TMP_DIR}/${VERSION}/lib
+EOF0
+sudo mv libcellml.sh /etc/profile.d/
+source /etc/profile.d/libcellml.sh
 

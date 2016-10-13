@@ -8,10 +8,10 @@ import traceback
 
 if __name__ == "__main__":
     try:
-        import co
-        print('libcombine', libC)
+        import libcombine
+        print('libcombine', libcombine.getLibCombineDottedVersion())
         sys.exit(0)
 
-    except:
+    except Exception:
         traceback.print_exc()
         sys.exit(1)

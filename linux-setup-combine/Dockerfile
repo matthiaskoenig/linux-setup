@@ -5,14 +5,17 @@ MAINTAINER Matthias Koenig <konigmatt@googlemail.com>
 WORKDIR $HOME/linux-setup
 RUN git pull
 
-# run ubuntu base installation
-WORKDIR $HOME/linux-setup/scripts
-
-# necessary for container
+# paths to find libraries
 ENV PYTHONPATH $PYTHONPATH:/usr/local/lib/python2.7/site-packages/libsbml
 ENV PYTHONPATH $PYTHONPATH:/usr/local/lib/python2.7/site-packages/libsedml
 ENV PYTHONPATH $PYTHONPATH:/usr/local/lib/python2.7/site-packages/libcombine
 ENV PYTHONPATH $PYTHONPATH:/usr/local/lib/python2.7/site-packages/libnuml
+
+ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:$HOME/temp/cellml-sdk-1.12-Linux-x86_64/lib
+
+# run ubuntu base installation
+WORKDIR $HOME/linux-setup/scripts
+
 
 RUN ./combine.sh && \
     rm -rf $HOME/git && \

@@ -12,6 +12,6 @@ if __name__ == "__main__":
         print(antimony.__version__)
         sys.exit(0)
 
-    except:
+    except Exception:
         traceback.print_exc()
         sys.exit(1)

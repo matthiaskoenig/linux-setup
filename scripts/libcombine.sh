@@ -4,7 +4,7 @@
 # https://github.com/sbmlteam/libCombine.git
 #
 # Usage: 
-# 	./libCombine.sh 2>&1 | tee ./logs/libCombine.log
+# 	./libcombine.sh 2>&1 | tee ./logs/libcombine.log
 #
 # Depends on Zipper library
 ############################################################
@@ -90,6 +90,8 @@ EOF0
 sudo mv libcombine.sh /etc/profile.d/
 source /etc/profile.d/libcombine.sh
 
-# test import
-
+# test python bindings
+cd $DIR
+../tests/libcombine_test.py
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 

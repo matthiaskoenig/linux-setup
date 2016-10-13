@@ -63,9 +63,9 @@ mkdir $ANTIMONY_BUILD
 # CMAKE_CXX_FLAGS = -fPIC
 cd $ANTIMONY_BUILD
 # with cellml
-# cmake -DWITH_CELLML=ON -DCELLML_API_INSTALL_DIR="${TMP_DIR}/cellml-sdk-1.13-Linux-x86_64" -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
+cmake -DWITH_CELLML=ON -DCELLML_API_INSTALL_DIR="${TMP_DIR}/cellml-sdk-1.12-Linux-x86_64" -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
 # without cellml
-cmake -DWITH_CELLML=OFF -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
+# cmake -DWITH_CELLML=OFF -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
 make -j8
 
 echo "--------------------------------------"

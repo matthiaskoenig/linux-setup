@@ -28,7 +28,7 @@ fi
 ./phrasedml.sh 2>&1 | tee ${LOGS_DIR}/phrasedml.log
 
 ./zipper.sh 2>&1 | tee ${LOGS_DIR}/zipper.log
-./libCombine.sh 2>&1 | tee ${LOGS_DIR}/libCombine.log
+./libcombine.sh 2>&1 | tee ${LOGS_DIR}/libcombine.log
 
 ./sbml2matlab.sh 2>&1 | tee ${LOGS_DIR}/sbml2matlab.log
 ./tellurium.sh 2>&1 | tee ${LOGS_DIR}/tellurium.log
