@@ -9,8 +9,10 @@ branches:
 services:
     - docker
 
+# separate build jobs for time limit
 script:
-    - make build-test-all
+    - make build/linux-setup-base
+	- make build/linux-setup-combine
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
