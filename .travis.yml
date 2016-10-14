@@ -12,7 +12,8 @@ services:
 # separate build jobs for time limit
 script:
     - make build/linux-setup-base
-    - make build/linux-setup-combine
+# This currently just takes to long for travis (>50min)
+#    - make build/linux-setup-combine
 
 after_success:
     - bash <(curl -s https://codecov.io/bash)
