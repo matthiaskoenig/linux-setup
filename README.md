@@ -38,9 +38,10 @@ installs the following components:
 * `libsbml.sh` : SBML with language bindings for R and python
 * `libsedml.sh` : SEDML with language bindings for R and python
 * `roadrunner.sh` : libRoadrunner for numerical simulation with python bindings
+* `libcellml.sh` : CellML libraries
 * `antimony.sh` : Antimony with python bindings
-* `phrasedml.sh` : phrasedml with python bindings    
-* `tellurium.sh` : tellurium
+* `phrasedml.sh` : phrasedml with python bindings
+* `libcombine.sh` : libcombine with python bindings
 * `sbml2matlab.sh` : sbml2matlab  
 * `spyder.sh` : Spyder IDE installation
 

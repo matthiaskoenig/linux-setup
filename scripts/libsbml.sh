@@ -101,6 +101,5 @@ echo "--------------------------------------"
 echo "R bindings"
 echo "--------------------------------------"
 sudo R CMD INSTALL $LIBSBML_BUILD/src/bindings/r/libSBML_*_R_x86_64-pc-linux-gnu.tar.gz
-../tests/libsbml_test.R
-rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+
 
