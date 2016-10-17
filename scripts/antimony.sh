@@ -28,11 +28,11 @@ echo "install dependencies"
 echo "---------------------------------------"
 # qt
 if lsb_release -r -s | grep -q '14.04'; then
-  echo "Ubuntu 14.04"
+  echo "Dependencies for Ubuntu 14.04"
   sudo apt-get -y install libqt4-core libqt4-dev
 fi
 if lsb_release -r -s | grep -q '16.04'; then
-  echo "Ubuntu 16.04"
+  echo "Dependencies for Ubuntu 16.04"
   sudo apt-get -y install qt4-default
 fi
 
@@ -63,7 +63,7 @@ mkdir $ANTIMONY_BUILD
 # CMAKE_CXX_FLAGS = -fPIC
 cd $ANTIMONY_BUILD
 # with cellml
-cmake -DWITH_CELLML=ON -DCELLML_API_INSTALL_DIR="${TMP_DIR}/cellml-sdk-1.12-Linux-x86_64" -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
+cmake -DWITH_CELLML=ON -DCELLML_API_INSTALL_DIR="/usr/local/lib/cellml-sdk-1.12-Linux-x86_64" -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
 # without cellml
 # cmake -DWITH_CELLML=OFF -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
 make -j8
