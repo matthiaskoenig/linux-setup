@@ -42,6 +42,7 @@ mkdir ${LLVM_INSTALL}
 cd ${TMP_DIR}
 wget -nc http://llvm.org/releases/${LLVM_VERSION}/${LLVM}-${LLVM_VERSION}.src.tar.xz
 tar xvf ${LLVM}-${LLVM_VERSION}.src.tar.xz
+rm ${LLVM}-${LLVM_VERSION}.src.tar.xz
 
 cd ${LLVM_BUILD}
 pwd
