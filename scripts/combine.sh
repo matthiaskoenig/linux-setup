@@ -20,7 +20,7 @@ fi
 
 ./libsbml.sh 2>&1 | tee ${LOGS_DIR}/libsbml.log
 ./libsedml.sh 2>&1 | tee ${LOGS_DIR}/libsedml.log
-./libcellml.sh 2>&1 | tee ${LOGS_DIR}/libcellml.log
+./cellml-api.sh 2>&1 | tee ${LOGS_DIR}/cellml-api.log
 
 ./roadrunner-deps.sh 2>&1 | tee ${LOGS_DIR}/roadrunner-deps.log
 ./roadrunner.sh 2>&1 | tee ${LOGS_DIR}/roadrunner.log
