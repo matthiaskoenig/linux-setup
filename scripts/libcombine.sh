@@ -61,6 +61,7 @@ cd ${BUILD}
 
 cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_QT_FILESYSTEM=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON ${GIT_DIR}/$CODE
 make -j8
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 echo "--------------------------------------"
 echo "install libCombine"
@@ -77,6 +78,7 @@ sudo rm /usr/local/lib/python2.7/site-packages/libcombine.pth
 
 # installation
 sudo make install
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 echo "--------------------------------------"
 echo "python bindings"

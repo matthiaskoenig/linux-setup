@@ -39,7 +39,6 @@ echo "pull libsbml repository"
 echo "--------------------------------------"
 if [ -d "${SVN_DIR}/$SBMLCODE" ]; then
 	cd ${SVN_DIR}/$SBMLCODE
-	svn update
 else
 	cd $SVN_DIR
 	# svn checkout http://svn.code.sf.net/p/sbml/code/trunk $SBMLCODE
@@ -48,6 +47,9 @@ else
     svn update --quiet --set-depth infinity $SBMLCODE/libsbml
 	cd ${SVN_DIR}/$SBMLCODE
 fi
+# svn update
+# svn update -r 23590 # rel-5-14-0
+svn update -r 23175 # rel-5-13-0
 
 echo "--------------------------------------"
 echo "build libsbml"

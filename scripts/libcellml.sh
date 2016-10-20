@@ -38,28 +38,3 @@ export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/usr/local/lib/${VERSION}/lib
 EOF0
 sudo mv libcellml.sh /etc/profile.d/
 source /etc/profile.d/libcellml.sh
-
-
-##############################
-# Build cellml
-##############################
-
-#sudo apt-get install omniidl
-#
-#cd ${TMP_DIR}
-#API_VERSION=cellml-api-1.13
-#wget https://sourceforge.net/projects/cellml-api/files/CellML-API-Nightly/1.13/20130716/src/${API_VERSION}.tar.bz2/download
-#mv download ${API_VERSION}.tar.bz2
-#tar jxfv ${API_VERSION}.tar.bz2
-#
-#CELLML_BUILD=$TMP_DIR/cellml_build
-#if ! [ -d "$CELLML_BUILD" ]; then
-#	mkdir $CELLML_BUILD
-#fi
-#cd ${CELLML_BUILD}
-#${TMP_DIR}/${VERSION}
-#cmake -DCMAKE_INCLUDE_DIRECTORIES=${TMP_DIR}/${VERSION}/include -DCMAKE_RUNTIME_OUTPUT_DIRECTORY=${CELLML_BUILD} ../${API_VERSION}/ 2>&1 | tee cellml.log
-#
-#make all
-#make test
-#make install
