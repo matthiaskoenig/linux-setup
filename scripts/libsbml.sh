@@ -47,9 +47,9 @@ else
     svn update --quiet --set-depth infinity $SBMLCODE/libsbml
 	cd ${SVN_DIR}/$SBMLCODE
 fi
-# svn update
+svn update
 # svn update -r 23590 # rel-5-14-0
-svn update -r 23175 # rel-5-13-0
+# svn update -r 23175 # rel-5-13-0
 
 echo "--------------------------------------"
 echo "build libsbml"
@@ -62,7 +62,9 @@ mkdir $LIBSBML_BUILD
 
 # here are the cmake files
 cd $LIBSBML_BUILD
-cmake -DWITH_BZIP2=OFF -DWITH_ZLIB=OFF -DENABLE_COMP=ON -DENABLE_FBC=ON -DENABLE_LAYOUT=ON -ENABLE_GROUPS -DENABLE_QUAL=ON -DWITH_EXAMPLES=ON -DWITH_PYTHON=ON -DWITH_R=ON ${SVN_DIR}/$SBMLCODE/libsbml
+
+# PYTHON_INSTALL_WITH_SETUP
+cmake -DWITH_BZIP2=OFF -DWITH_ZLIB=OFF -DLIBSBML_USE_LEGACY_MATH=ON -DENABLE_COMP=ON -DENABLE_FBC=ON -DENABLE_GROUPS=ON -DENABLE_LAYOUT=ON -ENABLE_GROUPS -DENABLE_QUAL=ON -DWITH_EXAMPLES=ON -DWITH_PYTHON=ON -DWITH_R=ON ${SVN_DIR}/$SBMLCODE/libsbml
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 make -j8
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
