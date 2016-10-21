@@ -61,7 +61,9 @@ LLVM_INSTALL=$TMP_DIR/${LLVM}-${LLVM_VERSION}_install
 cmake -DCMAKE_INSTALL_PREFIX=$ROADRUNNER_INSTALL -DTHIRD_PARTY_INSTALL_FOLDER=$ROADRUNNER_INSTALL -DBUILD_LLVM=ON -DBUILD_PYTHON=ON -DUSE_TR1_CXX_NS=ON -DBUILD_TESTS=ON -DBUILD_TEST_TOOLS=ON -DLIBSBML_INCLUDE_DIR=$ROADRUNNER_INSTALL/include -DLIBSBML_LIBRARY=$ROADRUNNER_INSTALL/lib/libsbml.so -DLIBSBML_STATIC_LIBRARY=$ROADRUNNER_INSTALL/lib/libsbml-static.a -DZLIB_LIBRARY=/usr/lib/x86_64-linux-gnu/libz.so -DBZ2_LIBRARY=/usr/lib/x86_64-linux-gnu/libbz2.so -DLLVM_CONFIG_EXECUTABLE=${LLVM_INSTALL}/bin/llvm-config ${GIT_DIR}/$ROADRUNNER
 
 make -j8
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 make install
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 # run the c++ tests
 ctest -VV
 

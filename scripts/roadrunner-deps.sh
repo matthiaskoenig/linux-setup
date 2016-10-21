@@ -47,6 +47,7 @@ rm ${LLVM}-${LLVM_VERSION}.src.tar.xz
 cd ${LLVM_BUILD}
 pwd
 cmake -DCMAKE_INSTALL_PREFIX=${LLVM_INSTALL} ${LLVM_SRC} && make install
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 # [ 93%] Building CXX object lib/Target/X86/CMakeFiles/LLVMX86CodeGen.dir/X86MachineFunctionInfo.cpp.o
 # cc1plus: internal compiler error: Segmentation fault
@@ -91,5 +92,5 @@ mkdir $ROADRUNNER_BUILD_THIRDPARTY
 
 cd $ROADRUNNER_BUILD_THIRDPARTY
 cmake -DCMAKE_INSTALL_PREFIX=$ROADRUNNER_INSTALL ${GIT_DIR}/$ROADRUNNER_DEPS && make -j8 install
-
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
