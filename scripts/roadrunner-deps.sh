@@ -41,12 +41,22 @@ mkdir ${LLVM_INSTALL}
 
 cd ${TMP_DIR}
 wget -nc http://llvm.org/releases/${LLVM_VERSION}/${LLVM}-${LLVM_VERSION}.src.tar.xz
-tar xvf ${LLVM}-${LLVM_VERSION}.src.tar.xz
+tar xf ${LLVM}-${LLVM_VERSION}.src.tar.xz
 rm ${LLVM}-${LLVM_VERSION}.src.tar.xz
 
 cd ${LLVM_BUILD}
 pwd
-cmake -DCMAKE_INSTALL_PREFIX=${LLVM_INSTALL} ${LLVM_SRC} && make -j8 install
+cmake -DCMAKE_INSTALL_PREFIX=${LLVM_INSTALL} ${LLVM_SRC} && make install
+
+# [ 93%] Building CXX object lib/Target/X86/CMakeFiles/LLVMX86CodeGen.dir/X86MachineFunctionInfo.cpp.o
+# cc1plus: internal compiler error: Segmentation fault
+# Please submit a full bug report,
+# with preprocessed source if appropriate.
+# See <file:///usr/share/doc/gcc-5/README.Bugs> for instructions.
+# lib/Target/XCore/CMakeFiles/LLVMXCoreCodeGen.dir/build.make:62: recipe for target 'lib/Target/XCore/CMakeF
+# iles/LLVMXCoreCodeGen.dir/XCoreAsmPrinter.cpp.o' failed
+# make[2]: *** [lib/Target/XCore/CMakeFiles/LLVMXCoreCodeGen.dir/XCoreAsmPrinter.cpp.o] Error 1
+# make[2]: *** Waiting for unfinished jobs....
 
 
 # libroadrunner dependencies
