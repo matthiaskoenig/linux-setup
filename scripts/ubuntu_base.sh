@@ -38,6 +38,7 @@ sudo apt-get -y install r-base-core r-base r-base-dev r-recommended
 sudo apt-get -y install python-dev python-pip
 sudo apt-get -y install pandoc pandoc-citeproc
 sudo apt-get -y install python-tk
+sudo apt-get install python-pygraphviz
 
 sudo pip install pip --upgrade
 sudo pip install Cython --upgrade
@@ -49,6 +50,7 @@ sudo pip install ipython --upgrade
 sudo pip install pandas --upgrade
 sudo pip install sympy --upgrade
 sudo pip install jupyter --upgrade
+sudo pip install ipywidgets --upgrade
 
 sudo pip install nose --upgrade
 sudo pip install coverage --upgrade

@@ -37,6 +37,15 @@ echo "--------------------------------------"
 echo "redis configuration"
 echo "--------------------------------------"
 cd utils
+
+# interactive installation
+# TODO: use default installation without need for interactions
 sudo ./install_server.sh
 # start at system start
 sudo update-rc.d redis_6379 defaults
+
+echo "--------------------------------------"
+echo "redis cleanup"
+echo "--------------------------------------"
+rm ${TMP_DIR}/redis-stable.tar.gz
+rm -rf ${TMP_DIR}/redis-stable
