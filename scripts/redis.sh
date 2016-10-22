@@ -17,7 +17,12 @@ echo "--------------------------------------"
 echo "redis installation"
 echo "--------------------------------------"
 
-sudo apt-get install build-essential tcl
+# message broker and celery
+sudo apt-get install -y build-essential tcl
+sudo apt-get install -y rabbitmq-server
+sudo pip install celery==3.1.24
+sudo pip install redis==2.10.5
+
 
 TMP_DIR=$HOME/tmp
 if ! [ -d "$TMP_DIR" ]; then
