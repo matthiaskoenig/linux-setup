@@ -22,7 +22,7 @@ sudo apt-get install -y build-essential tcl
 sudo apt-get install -y rabbitmq-server
 sudo pip install celery==3.1.24
 sudo pip install redis==2.10.5
-
+sudo pip install jobtastic==0.3.1
 
 TMP_DIR=$HOME/tmp
 if ! [ -d "$TMP_DIR" ]; then
