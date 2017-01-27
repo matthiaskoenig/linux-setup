@@ -9,8 +9,7 @@
 #   ./combine.sh
 ############################################################
 
-# TODO: keep the build directories which will speed u
-# subesequent builds
+# TODO: keep the build directories which will speed things up
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}

@@ -58,7 +58,7 @@ fi
 mkdir $NUML_BUILD
 cd $NUML_BUILD
 
-cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON ${GIT_DIR}/$NUMLCODE/libnuml
+cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON -DPYTHON_EXECUTABLE="/usr/bin/python" ${GIT_DIR}/$NUMLCODE/libnuml
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 make -j8
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
@@ -70,6 +70,11 @@ echo "--------------------------------------"
 sudo rm -rf /usr/local/share/libnuml
 sudo rm -rf /usr/local/include/numl/
 sudo rm -rf /usr/local/lib/libnuml*
+sudo rm -rf /usr/local/lib/python3.5/site-packages/libnuml/_libnuml.so
+sudo rm /usr/local/lib/python3.5/site-packages/libnuml.pth
+sudo rm -rf /usr/local/lib/python2.7/site-packages/libnuml/_libnuml.so
+sudo rm /usr/local/lib/python2.7/site-packages/libnuml.pth
+
 # installation
 sudo make install
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
@@ -86,6 +91,8 @@ else
 	git clone https://github.com/fbergmann/libSEDML.git $SEDMLCODE
 	cd $GIT_DIR/$SEDMLCODE
 fi
+# which version to use
+# git checkout 8b21223937cc49362ff1a6
 echo "*commit*"
 git rev-parse HEAD
 
@@ -100,7 +107,10 @@ mkdir $SEDML_BUILD
 
 # here are the cmake files
 cd $SEDML_BUILD
-cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON ${GIT_DIR}/$SEDMLCODE
+# cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON -DLIBSBML_INCLUDE_DIR="/usr/local/include/sbml" -DLIBNUML_INCLUDE_DIR="/usr/local/include/numl" ${GIT_DIR}/$SEDMLCODE
+# cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON ${GIT_DIR}/$SEDMLCODE
+cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON -DLIBSBML_INCLUDE_DIR="/usr/local/include" -DLIBNUML_INCLUDE_DIR="/usr/local/include" -DPYTHON_EXECUTABLE="/usr/bin/python" ${GIT_DIR}/$SEDMLCODE
+
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 make -j8
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
@@ -113,9 +123,14 @@ sudo rm -rf /usr/local/share/libsedml
 sudo rm -rf /usr/local/include/sedml
 sudo rm -rf /usr/local/lib/libsedml*
 sudo rm /usr/local/share/java/libsedmlj.jar
+sudo rm /usr/local/lib/libsedml*
+sudo rm /usr/local/lib/libSEDML*
 sudo rm /usr/local/lib/python2.7/site-packages/libsedml/_libsedml.so
 sudo rm /usr/local/lib/python2.7/site-packages/libsedml.pth
 sudo rm /usr/local/lib/python2.7/site-packages/libsedml/libsedml.py
+sudo rm -rf /usr/local/lib/python3.5/site-packages/libsedml
+sudo rm /usr/local/lib/python3.5/site-packages/libsedml.pth
+
 sudo rm /etc/profile.d/libnuml.sh
 sudo rm /etc/profile.d/libsedml.sh
 
