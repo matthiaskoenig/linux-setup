@@ -8,9 +8,7 @@ import traceback
 
 if __name__ == "__main__":
     try:
-        import libnuml
         import libsedml
-        print('libnuml', libnuml.getLibNUMLDottedVersion())
         print('libsedml', libsedml.getLibSEDMLDottedVersion())
 
         sys.exit(0)

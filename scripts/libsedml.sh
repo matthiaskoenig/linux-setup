@@ -58,7 +58,7 @@ fi
 mkdir $NUML_BUILD
 cd $NUML_BUILD
 
-cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON -DPYTHON_EXECUTABLE="/usr/bin/python" ${GIT_DIR}/$NUMLCODE/libnuml
+cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON -DPYTHON_EXECUTABLE="/usr/bin/python" -DPYTHON_INCLUDE_DIR="/usr/include/python2.7" -DPYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/libpython2.7.so" ${GIT_DIR}/$NUMLCODE/libnuml
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 make -j8
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
@@ -78,6 +78,26 @@ sudo rm /usr/local/lib/python2.7/site-packages/libnuml.pth
 # installation
 sudo make install
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+
+echo "--------------------------------------"
+echo "python bindings"
+echo "--------------------------------------"
+# add a file with the path settings to /etc/profile.d
+echo "Adding to PYTHONPATH: /usr/local/lib/python2.7/site-packages/libnuml"
+cat > libnuml.sh << EOF1
+#!/bin/bash
+export PYTHONPATH=\$PYTHONPATH:/usr/local/lib/python2.7/site-packages/libnuml
+EOF1
+sudo mv libnuml.sh /etc/profile.d/
+source /etc/profile.d/libnuml.sh
+
+# testing
+cd $DIR
+../tests/libnuml_test.py
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+
+
+
 
 echo "--------------------------------------"
 echo "pull libSEDML repository"
@@ -107,9 +127,12 @@ mkdir $SEDML_BUILD
 
 # here are the cmake files
 cd $SEDML_BUILD
-# cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON -DLIBSBML_INCLUDE_DIR="/usr/local/include/sbml" -DLIBNUML_INCLUDE_DIR="/usr/local/include/numl" ${GIT_DIR}/$SEDMLCODE
 # cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON ${GIT_DIR}/$SEDMLCODE
-cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON -DLIBSBML_INCLUDE_DIR="/usr/local/include" -DLIBNUML_INCLUDE_DIR="/usr/local/include" -DPYTHON_EXECUTABLE="/usr/bin/python" ${GIT_DIR}/$SEDMLCODE
+
+cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON -DLIBSBML_INCLUDE_DIR="/usr/local/include" -DLIBNUML_INCLUDE_DIR="/usr/local/include" ${GIT_DIR}/$SEDMLCODE
+
+
+#cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON -DLIBSBML_INCLUDE_DIR="/usr/local/include" -DLIBNUML_INCLUDE_DIR="/usr/local/include" -DPYTHON_EXECUTABLE="/usr/bin/python" -DPYTHON_INCLUDE_DIR="/usr/include/python2.7" -DPYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/libpython2.7.so" ${GIT_DIR}/$SEDMLCODE
 
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 make -j8
@@ -138,17 +161,7 @@ sudo rm /etc/profile.d/libsedml.sh
 sudo make install
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
-echo "--------------------------------------"
-echo "python bindings"
-echo "--------------------------------------"
-# add a file with the path settings to /etc/profile.d
-echo "Adding to PYTHONPATH: /usr/local/lib/python2.7/site-packages/libnuml"
-cat > libnuml.sh << EOF1
-#!/bin/bash
-export PYTHONPATH=\$PYTHONPATH:/usr/local/lib/python2.7/site-packages/libnuml
-EOF1
-sudo mv libnuml.sh /etc/profile.d/
-source /etc/profile.d/libnuml.sh
+
 
 # add a file with the path settings to /etc/profile.d
 echo "Adding to PYTHONPATH: /usr/local/lib/python2.7/site-packages/libsedml"
