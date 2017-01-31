@@ -59,7 +59,7 @@ mkdir ${BUILD}
 # here are the cmake files
 cd ${BUILD}
 
-cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_QT_FILESYSTEM=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DPYTHON_EXECUTABLE="/usr/bin/python" -DPYTHON_INCLUDE_DIR="/usr/include/python2.7" -DPYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/libpython2.7.so" ${GIT_DIR}/$CODE
+cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_QT_FILESYSTEM=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON ${GIT_DIR}/$CODE
 make -j8
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
