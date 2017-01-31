@@ -1,5 +1,5 @@
 # Base linux-setup
-Installs all the dependency libraries required for the combine stack.
+Install all libraries required for the combine stack.
 
 To interact with the docker image use
 ```
