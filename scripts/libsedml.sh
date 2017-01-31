@@ -111,8 +111,6 @@ else
 	git clone https://github.com/fbergmann/libSEDML.git $SEDMLCODE
 	cd $GIT_DIR/$SEDMLCODE
 fi
-# which version to use
-# git checkout 8b21223937cc49362ff1a6
 echo "*commit*"
 git rev-parse HEAD
 
@@ -127,10 +125,10 @@ mkdir $SEDML_BUILD
 
 # here are the cmake files
 cd $SEDML_BUILD
+
 # cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON ${GIT_DIR}/$SEDMLCODE
-
-cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON -DLIBSBML_INCLUDE_DIR="/usr/local/include" -DLIBNUML_INCLUDE_DIR="/usr/local/include" ${GIT_DIR}/$SEDMLCODE
-
+# cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON -DLIBSBML_INCLUDE_DIR="/usr/local/include" -DLIBNUML_INCLUDE_DIR="/usr/local/include" ${GIT_DIR}/$SEDMLCODE
+cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON -DPYTHON_EXECUTABLE="/usr/bin/python" -DPYTHON_INCLUDE_DIR="/usr/include/python2.7" -DPYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/libpython2.7.so" ${GIT_DIR}/$SEDMLCODE
 
 #cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON -DWITH_R=ON -DLIBSBML_INCLUDE_DIR="/usr/local/include" -DLIBNUML_INCLUDE_DIR="/usr/local/include" -DPYTHON_EXECUTABLE="/usr/bin/python" -DPYTHON_INCLUDE_DIR="/usr/include/python2.7" -DPYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/libpython2.7.so" ${GIT_DIR}/$SEDMLCODE
 

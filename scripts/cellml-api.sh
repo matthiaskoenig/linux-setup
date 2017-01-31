@@ -65,7 +65,7 @@ make -j8
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 echo "--------------------------------------"
-echo "install libCombine"
+echo "install cellml-api"
 echo "--------------------------------------"
 # remove old files
 

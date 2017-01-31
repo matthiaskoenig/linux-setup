@@ -5,9 +5,6 @@
 #
 # Usage: 
 # 	./sbml2matlab.sh 2>&1 | tee ./logs/sbml2matlab.log
-#
-# @author: Matthias Koenig
-# @date: 2016-01-19
 ############################################################
 date
 echo "--------------------------------------"
@@ -58,7 +55,7 @@ mkdir $SBML2MATLAB_INSTALL
 
 
 cd $SBML2MATLAB_BUILD
-cmake -DLIBSBML_STATIC_LIBRARY="/usr/local/lib/libsbml-static.a" -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_PYTHON=ON -DCMAKE_INSTALL_PREFIX=$SBML2MATLAB_INSTALL ${GIT_DIR}/$CODE
+cmake -DLIBSBML_STATIC_LIBRARY="/usr/local/lib/libsbml-static.a" -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_PYTHON=ON -DPYTHON_EXECUTABLE="/usr/bin/python" -DPYTHON_INCLUDE_DIR="/usr/include/python2.7" -DPYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/libpython2.7.so" -DCMAKE_INSTALL_PREFIX=$SBML2MATLAB_INSTALL ${GIT_DIR}/$CODE
 make
 
 echo "--------------------------------------"
