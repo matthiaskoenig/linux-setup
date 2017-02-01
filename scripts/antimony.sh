@@ -75,6 +75,13 @@ echo "--------------------------------------"
 echo "install antimony"
 echo "--------------------------------------"
 
+# remove old version
+sudo pip uninstall antimony
+
+sudo rm -rf /usr/local/lib/python2.7/dist-packages/antimony*
+sudo rm -rf /usr/local/lib/python2.7/site-packages/antimony
+sudo rm -rf /usr/local/lib/python2.7/site-packages/libantimony.pth
+
 # sudo rm /usr/local/lib/libantimony.so
 # sudo rm /usr/local/lib/libantimony-static.a
 # sudo rm /usr/local/bin/rehashantimony
@@ -87,10 +94,10 @@ echo "--------------------------------------"
 # sudo rm /usr/local/bin/QTAntimony
 # sudo rm /usr/local/bin/antimony.ico
 
-# sudo rm -rf /usr/local/lib/python2.7/dist-packages/antimony
 
 
-sudo make -j8 install
+
+sudo make install
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 
