@@ -30,7 +30,6 @@ echo "---------------------------------------"
 sudo apt-get update
 sudo apt-get -y install subversion cmake cmake-gui swig libxml2 libxml2-dev libbz2-dev zlib1g-dev
 
-
 echo "--------------------------------------"
 echo "pull libsbml repository"
 echo "--------------------------------------"
@@ -45,24 +44,20 @@ else
 	cd ${SVN_DIR}/$SBMLCODE
 fi
 svn update
-# svn update -r 23590 # rel-5-14-0
-# svn update -r 23175 # rel-5-13-0
 
 echo "--------------------------------------"
 echo "build libsbml"
 echo "--------------------------------------"
 LIBSBML_BUILD=$TMP_DIR/libsbml_build
-if [ -d "$LIBSBML_BUILD" ]; then
-	sudo rm -rf $LIBSBML_BUILD
-fi
+# if [ -d "$LIBSBML_BUILD" ]; then
+#	sudo rm -rf $LIBSBML_BUILD
+# fi
 mkdir $LIBSBML_BUILD
-
-# here are the cmake files
 cd $LIBSBML_BUILD
 
-# PYTHON_INSTALL_WITH_SETUP
-cmake -DWITH_BZIP2=OFF -DWITH_ZLIB=OFF -DLIBSBML_USE_LEGACY_MATH=ON -DENABLE_COMP=ON -DENABLE_FBC=ON -DENABLE_GROUPS=ON -DENABLE_LAYOUT=ON -ENABLE_GROUPS -DENABLE_QUAL=ON -DWITH_EXAMPLES=ON -DWITH_PYTHON=ON -DWITH_R=ON -DWITH_CREATE_PYTHON_SOURCE=ON ${SVN_DIR}/$SBMLCODE/libsbml
+cmake -DWITH_BZIP2=OFF -DWITH_ZLIB=OFF -DLIBSBML_USE_LEGACY_MATH=ON -DENABLE_COMP=ON -DENABLE_FBC=ON -DENABLE_GROUPS=ON -DENABLE_LAYOUT=ON -ENABLE_GROUPS -DENABLE_QUAL=ON -DWITH_EXAMPLES=ON -DWITH_R=ON -DWITH_PYTHON=OFF -DWITH_CREATE_PYTHON_SOURCE=ON ${SVN_DIR}/$SBMLCODE/libsbml
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+
 make -j8
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
@@ -76,31 +71,30 @@ sudo rm -rf /usr/local/include/sbml/
 sudo rm -rf /usr/local/lib/libsbml*
 sudo rm /usr/local/lib/python2.7/site-packages/libsbml.pth
 sudo rm -rf /usr/local/lib/python2.7/site-packages/libsbml
+sudo rm /etc/profile.d/libsbml.sh
 
 # installation
 sudo make -j8 install
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
+# sudo rm /usr/local/lib/python2.7/site-packages/libsbml.pth
+# sudo rm -rf /usr/local/lib/python2.7/site-packages/libsbml
+
 echo "--------------------------------------"
 echo "python bindings"
 echo "--------------------------------------"
-# add a file with the path settings to /etc/profile.d
-echo "Adding to PYTHONPATH: /usr/local/lib/python2.7/site-packages/libsbml"
-cat > libsbml.sh << EOF0
-#!/bin/bash
-export PYTHONPATH=\$PYTHONPATH:/usr/local/lib/python2.7/site-packages/libsbml
-EOF0
-sudo mv libsbml.sh /etc/profile.d/
-source /etc/profile.d/libsbml.sh
+cd $LIBSBML_BUILD/src/bindings/python/out/
+python setup.py install --user
 
 # test python bindings
 cd $DIR
 ../tests/libsbml_test.py
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
+# test that pip package installed
+echo pip list | grep libsbml
+
 echo "--------------------------------------"
 echo "R bindings"
 echo "--------------------------------------"
 sudo R CMD INSTALL $LIBSBML_BUILD/src/bindings/r/libSBML_*_R_x86_64-pc-linux-gnu.tar.gz
-
-

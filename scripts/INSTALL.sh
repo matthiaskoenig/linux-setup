@@ -6,11 +6,10 @@
 # and installs the respective python SWIG interfaces.
 #
 # Usage:
-#   ./combine.sh
+#   ./INSTALL.sh
+#
+# Logs are written in the logs directory
 ############################################################
-
-# TODO: keep the build directories which will speed things up
-
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 

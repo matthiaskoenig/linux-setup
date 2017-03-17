@@ -6,8 +6,6 @@
 # Usage: 
 # 	./phrasedml.sh 2>&1 | tee ./logs/phrasedml.log
 #
-# @author: Matthias Koenig
-# @date: 2016-01-23
 ############################################################
 date
 echo "--------------------------------------"
@@ -43,19 +41,13 @@ echo "build phrasedml"
 echo "--------------------------------------"
 BUILD_DIR=$TMP_DIR/${PHRASEDML}_build
 echo "Build directory:" $BUILD_DIR
-if [ -d "$BUILD_DIR" ]; then
-	sudo rm -rf $BUILD_DIR
-fi
+# if [ -d "$BUILD_DIR" ]; then
+# 	sudo rm -rf $BUILD_DIR
+# fi
 mkdir $BUILD_DIR
-
-# cmake build
-# if build with -fPIC is necessary, toggle advanced in cmake-gui and set
-# CMAKE_CXX_FLAGS = -fPIC
 cd $BUILD_DIR
 
 cmake -DWITH_PYTHON=ON -DCELLML_API_INSTALL_DIR="$HOME/tmp/cellml-sdk-1.13-Linux-x86_64" -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON ${SVN_DIR}/$CODE
-#cmake -DWITH_PYTHON=ON -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_EXAMPLES=ON ${SVN_DIR}/# $CODE
-
 make
 
 echo "--------------------------------------"

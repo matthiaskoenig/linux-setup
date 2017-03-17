@@ -51,12 +51,10 @@ echo "--------------------------------------"
 echo "build zipper"
 echo "--------------------------------------"
 BUILD=$TMP_DIR/zipper_build
-if [ -d "${BUILD}" ]; then
-	sudo rm -rf ${BUILD}
-fi
+# if [ -d "${BUILD}" ]; then
+# 	sudo rm -rf ${BUILD}
+# fi
 mkdir ${BUILD}
-
-# here are the cmake files
 cd ${BUILD}
 cmake -DWITH_QT_FILESYSTEM=ON ${GIT_DIR}/$CODE
 make -j8

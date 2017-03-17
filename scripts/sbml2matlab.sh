@@ -41,9 +41,9 @@ echo "build sbml2matlab"
 echo "--------------------------------------"
 SBML2MATLAB_BUILD=$TMP_DIR/sbml2matlab_build
 echo "Build directory:" $SBML2MATLAB_BUILD
-if [ -d "$SBML2MATLAB_BUILD" ]; then
-	sudo rm -rf $SBML2MATLAB_BUILD
-fi
+# if [ -d "$SBML2MATLAB_BUILD" ]; then
+#	sudo rm -rf $SBML2MATLAB_BUILD
+# fi
 mkdir $SBML2MATLAB_BUILD
 
 SBML2MATLAB_INSTALL=$TMP_DIR/sbml2matlab_install

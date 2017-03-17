@@ -50,7 +50,7 @@ echo "build roadrunner"
 echo "--------------------------------------"
 ROADRUNNER_BUILD=${TMP_DIR}/roadrunner_build
 ROADRUNNER_INSTALL=${TMP_DIR}/roadrunner_install
-rm -rf $ROADRUNNER_BUILD
+# rm -rf $ROADRUNNER_BUILD
 mkdir $ROADRUNNER_BUILD
 cd $ROADRUNNER_BUILD
 

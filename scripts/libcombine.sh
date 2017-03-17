@@ -51,12 +51,10 @@ echo "--------------------------------------"
 echo "build libCombine"
 echo "--------------------------------------"
 BUILD=$TMP_DIR/libCombine_build
-if [ -d "${BUILD}" ]; then
-	sudo rm -rf ${BUILD}
-fi
+# if [ -d "${BUILD}" ]; then
+# 	sudo rm -rf ${BUILD}
+# fi
 mkdir ${BUILD}
-
-# here are the cmake files
 cd ${BUILD}
 
 cmake -DEXTRA_LIBS="xml2;z;bz2;" -DWITH_QT_FILESYSTEM=ON -DWITH_JAVA=ON -DWITH_PYTHON=ON ${GIT_DIR}/$CODE
@@ -66,7 +64,7 @@ rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 echo "--------------------------------------"
 echo "install libCombine"
 echo "--------------------------------------"
-# remove old files
+# remove old installation
 sudo rm -rf /usr/local/include/combine/
 sudo rm -rf /usr/local/include/omex/
 sudo rm -rf /usr/local/lib/libCombine*
@@ -77,6 +75,8 @@ sudo rm /usr/local/lib/python2.7/site-packages/libcombine.pth
 sudo rm -rf /usr/local/lib/python3.5/site-packages/libcombine/
 sudo rm /usr/local/lib/python3.5/site-packages/libcombine.pth
 
+sudo rm /etc/profile.d/libcombine.sh
+
 # installation
 sudo make install
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
@@ -84,7 +84,6 @@ rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 echo "--------------------------------------"
 echo "python bindings"
 echo "--------------------------------------"
-# add a file with the path settings to /etc/profile.d
 echo "Adding to PYTHONPATH: /usr/local/lib/python2.7/site-packages/libcombine"
 cat > libcombine.sh << EOF0
 #!/bin/bash
@@ -93,8 +92,7 @@ EOF0
 sudo mv libcombine.sh /etc/profile.d/
 source /etc/profile.d/libcombine.sh
 
-# test python bindings
+# tests
 cd $DIR
 ../tests/libcombine_test.py
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
-
