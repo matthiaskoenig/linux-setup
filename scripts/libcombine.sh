@@ -9,6 +9,7 @@
 # Depends on Zipper library
 ############################################################
 date
+TSTART=`date +%s`
 echo "--------------------------------------"
 echo "libCombine installation"
 echo "--------------------------------------"
@@ -96,3 +97,7 @@ source /etc/profile.d/libcombine.sh
 cd $DIR
 ../tests/libcombine_test.py
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+
+TEND=`date +%s`
+RUNTIME=$((TEND-TSTART))
+echo "runtime: $RUNTIME [s]"

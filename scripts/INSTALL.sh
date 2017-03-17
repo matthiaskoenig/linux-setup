@@ -6,7 +6,7 @@
 # and installs the respective python SWIG interfaces.
 #
 # Usage:
-#   ./INSTALL.sh
+#   ./INSTALL.sh | tee ./logs/INSTALL.log
 #
 # Logs are written in the logs directory
 ############################################################
@@ -27,8 +27,9 @@ rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 ./libsedml.sh 2>&1 | tee ${LOGS_DIR}/libsedml.log
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
-./cellml-api.sh 2>&1 | tee ${LOGS_DIR}/cellml-api.log
-rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+# no cellml support
+# ./cellml-api.sh 2>&1 | tee ${LOGS_DIR}/cellml-api.log
+# rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 ./roadrunner-deps.sh 2>&1 | tee ${LOGS_DIR}/roadrunner-deps.log
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
@@ -54,6 +55,7 @@ rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 ./spyder.sh 2>&1 | tee ${LOGS_DIR}/spyder.log
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
+# python installs
 # ./tellurium.sh 2>&1 | tee ${LOGS_DIR}/tellurium.log
 
 TEND=`date +%s`

@@ -11,6 +11,8 @@
 #
 ############################################################
 date
+TSTART=`date +%s`
+
 echo "--------------------------------------"
 echo "libnuml & libsedml installation"
 echo "--------------------------------------"
@@ -169,3 +171,7 @@ source /etc/profile.d/libsedml.sh
 cd $DIR
 ../tests/libsedml_test.py
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+
+TEND=`date +%s`
+RUNTIME=$((TEND-TSTART))
+echo "runtime: $RUNTIME [s]"

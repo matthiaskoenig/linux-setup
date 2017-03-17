@@ -7,6 +7,7 @@
 # 	./cellml-api.sh 2>&1 | tee ./logs/cellml-api.log
 ######################################################
 date
+TSTART=`date +%s`
 echo "--------------------------------------"
 echo "cellml-api requirements"
 echo "--------------------------------------"
@@ -71,3 +72,7 @@ echo "--------------------------------------"
 
 sudo make install
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
+
+TEND=`date +%s`
+RUNTIME=$((TEND-TSTART))
+echo "runtime: $RUNTIME [s]"
