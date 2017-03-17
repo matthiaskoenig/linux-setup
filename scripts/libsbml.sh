@@ -7,6 +7,8 @@
 # 	./libsbml.sh 2>&1 | tee ./logs/libsbml.log
 ############################################################
 date
+TSTART=`date +%s`
+
 echo "--------------------------------------"
 echo "libsbml installation"
 echo "--------------------------------------"
@@ -98,3 +100,7 @@ echo "--------------------------------------"
 echo "R bindings"
 echo "--------------------------------------"
 sudo R CMD INSTALL $LIBSBML_BUILD/src/bindings/r/libSBML_*_R_x86_64-pc-linux-gnu.tar.gz
+
+TEND=`date +%s`
+RUNTIME=$((TEND-TSTART))
+echo "runtime: $RUNTIME [s]"
