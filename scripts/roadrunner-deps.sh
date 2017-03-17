@@ -5,11 +5,10 @@
 #
 # Usage: 
 # 	./roadrunner-deps.sh 2>&1 | tee ./logs/roadrunner-deps.log
-#
-# @author: Matthias Koenig
-# @date: 2016-09-08
 ############################################################
 date
+TSTART=`date +%s`
+
 echo "--------------------------------------"
 echo "roadrunner-deps installation"
 echo "--------------------------------------"
@@ -23,9 +22,7 @@ TMP_DIR=$HOME/tmp
 # install dependencies
 echo "install system dependencies"
 sudo apt-get install git libxml2-dev
-sudo -E pip install numpy --upgrade
-sudo -E pip install scipy --upgrade
-
+pip install numpy scipy --upgrade --user
 
 echo "install LLVM 3.5.2"
 LLVM=llvm
@@ -84,3 +81,6 @@ cd $ROADRUNNER_BUILD_THIRDPARTY
 cmake -DCMAKE_INSTALL_PREFIX=$ROADRUNNER_INSTALL ${GIT_DIR}/$ROADRUNNER_DEPS && make -j8 install
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
+TEND=`date +%s`
+RUNTIME=$((TEND-TSTART))
+echo "runtime: $RUNTIME [s]"

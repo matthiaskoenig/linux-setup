@@ -119,9 +119,9 @@ echo "--------------------------------------"
 echo "build libSEDML"
 echo "--------------------------------------"
 SEDML_BUILD=$TMP_DIR/sedml_build
-# if [ -d "$SEDML_BUILD" ]; then
-#	sudo rm -rf $SEDML_BUILD
-# fi
+if [ -d "$SEDML_BUILD" ]; then
+    sudo rm -rf $SEDML_BUILD
+fi
 mkdir $SEDML_BUILD
 cd $SEDML_BUILD
 
@@ -162,6 +162,8 @@ export PYTHONPATH=\$PYTHONPATH:/usr/local/lib/python2.7/site-packages/libsedml
 EOF2
 sudo mv libsedml.sh /etc/profile.d/
 source /etc/profile.d/libsedml.sh
+
+# TODO: install the R bindings
 
 # testing
 cd $DIR

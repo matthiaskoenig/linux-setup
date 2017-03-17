@@ -12,6 +12,8 @@
 # checkout command for roadrunner.
 ############################################################
 date
+TSTART=`date +%s`
+
 echo "--------------------------------------"
 echo "roadrunner installation"
 echo "--------------------------------------"
@@ -65,7 +67,7 @@ rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 make install
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 # run the c++ tests
-ctest -VV
+# ctest -VV
 
 echo "--------------------------------------"
 echo "roadrunner python bindings"
@@ -83,3 +85,7 @@ echo "roadrunner tests"
 echo "--------------------------------------"
 cd $DIR
 ../tests/roadrunner_test.py
+
+TEND=`date +%s`
+RUNTIME=$((TEND-TSTART))
+echo "runtime: $RUNTIME [s]"

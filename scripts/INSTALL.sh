@@ -10,6 +10,8 @@
 #
 # Logs are written in the logs directory
 ############################################################
+TSTART=`date +%s`
+
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
@@ -54,3 +56,6 @@ rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 # ./tellurium.sh 2>&1 | tee ${LOGS_DIR}/tellurium.log
 
+TEND=`date +%s`
+RUNTIME=$((TEND-TSTART))
+echo "TOTAL RUNTIME: $RUNTIME [s]"

@@ -7,6 +7,8 @@
 # 	./antimony.sh 2>&1 | tee ./logs/antimony.log
 ############################################################
 date
+TSTART=`date +%s`
+
 echo "--------------------------------------"
 echo "antimony installation"
 echo "--------------------------------------"
@@ -82,3 +84,7 @@ echo "test antimony"
 echo "--------------------------------------"
 cd $DIR
 ../tests/antimony_test.py
+
+TEND=`date +%s`
+RUNTIME=$((TEND-TSTART))
+echo "runtime: $RUNTIME [s]"
