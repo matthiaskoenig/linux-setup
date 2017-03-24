@@ -86,7 +86,7 @@ echo "--------------------------------------"
 echo "python bindings"
 echo "--------------------------------------"
 cd $LIBSBML_BUILD/src/bindings/python/out/
-pip install . --upgrade
+sudo python setup.py install
 
 
 sudo rm /usr/local/lib/python2.7/site-packages/libsbml.pth
