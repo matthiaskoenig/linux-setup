@@ -33,8 +33,8 @@ sudo apt-get update
 sudo apt-get -y upgrade
 sudo pip install --upgrade setuptools pip
 
-echo "*** flashback ***"
-sudo apt-get install compizconfig-settings-manager compiz-plugins
+# echo "*** flashback ***"
+# sudo apt-get -y install compizconfig-settings-manager compiz-plugins
 
 echo "*** Install codecs ***"
 sudo apt-get -y install ubuntu-restricted-extras libxine1-ffmpeg gxine mencoder mpeg2dec vorbis-tools id3v2 mpg321 mpg123 libflac++6v5 icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 libjpeg-progs flac faac faad sox ffmpeg2theora libmpeg2-4 uudeview flac mpeg3-utils mpegdemux liba52-0.7.4-dev 
@@ -82,7 +82,6 @@ echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | su
   sudo apt-get update && \
   sudo apt-get install -y oracle-java8-installer && \
   sudo rm -rf /var/cache/oracle-jdk8-installer
-
 
 
 # switch java alternatives
