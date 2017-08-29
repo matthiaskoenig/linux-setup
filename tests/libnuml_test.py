@@ -1,8 +1,8 @@
 #!/usr/bin/python
 ############################################################
-# Test libsedml python bindings
+# Test libnuml python bindings
 ############################################################
-from __future__ import print_function, division
+from __future__ import print_function
 import sys
 import traceback
 

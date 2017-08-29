@@ -29,14 +29,7 @@ echo "---------------------------------------"
 echo "install dependencies"
 echo "---------------------------------------"
 # qt
-if lsb_release -r -s | grep -q '14.04'; then
-  echo "Dependencies for Ubuntu 14.04"
-  sudo apt-get -y install libqt4-core libqt4-dev
-fi
-if lsb_release -r -s | grep -q '16.04'; then
-  echo "Dependencies for Ubuntu 16.04"
-  sudo apt-get -y install qt4-default
-fi
+sudo apt-get -y install qt4-default
 
 echo "--------------------------------------"
 echo "pull repository"
@@ -62,7 +55,10 @@ mkdir $ANTIMONY_BUILD
 cd $ANTIMONY_BUILD
 # with cellml
 # cmake -DWITH_CELLML=ON -DCELLML_API_INSTALL_DIR="/usr/local/lib/cellml-sdk-1.13-Linux-x86_64" -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
-cmake -DWITH_CELLML=ON -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
+cmake -DWITH_CELLML=OFF -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony
+# cmake -DWITH_CELLML=OFF -DWITH_PYTHON=ON ${SVN_DIR}/$CODE/antimony -DPYTHON_EXECUTABLE=/usr/bin/python3.6 -DPYTON_INCLUDE_DIR=/usr/include/python3.6 -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6.so
+
+
 make # DONT ! -j8
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
@@ -70,10 +66,13 @@ echo "--------------------------------------"
 echo "install antimony"
 echo "--------------------------------------"
 # remove old version
-sudo pip uninstall antimony
+# sudo pip uninstall antimony
 sudo rm -rf /usr/local/lib/python2.7/dist-packages/antimony*
 sudo rm -rf /usr/local/lib/python2.7/site-packages/antimony
 sudo rm -rf /usr/local/lib/python2.7/site-packages/libantimony.pth
+sudo rm -rf /usr/local/lib/python3.6/dist-packages/antimony*
+sudo rm -rf /usr/local/lib/python3.6/site-packages/antimony
+sudo rm -rf /usr/local/lib/python3.6/site-packages/libantimony.pth
 
 sudo make install
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
