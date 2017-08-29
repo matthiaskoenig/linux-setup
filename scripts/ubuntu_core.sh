@@ -127,6 +127,7 @@ sudo -E pip install pyreadline --upgrade
 sudo -E pip install pyexcel pyexcel-xlsx --upgrade
 
 # virtual environment
-sudo -E pip install virtualenv --upgrade
-sudo -E pip install virtualenvwrapper --upgrade
+sudo -E pip install virtualenv virtualenvwrapper --upgrade
+sudo -E pip install pytest pytest-cov pytest-benchmark --upgrade
+
 

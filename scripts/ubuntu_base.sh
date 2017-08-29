@@ -47,6 +47,7 @@ sudo pip install scipy --upgrade
 
 sudo pip install matplotlib --upgrade
 sudo pip install ipython --upgrade
+sudo pip install jupyter --upgrade
 sudo pip install pandas --upgrade
 sudo pip install sympy --upgrade
 sudo pip install jupyter --upgrade
@@ -62,4 +63,5 @@ sudo pip install sklearn --upgrade
 sudo pip install palettable --upgrade
 sudo pip install pyreadline --upgrade
 sudo pip install pyexcel pyexcel-xlsx --upgrade
+
 

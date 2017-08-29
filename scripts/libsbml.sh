@@ -98,7 +98,7 @@ cd $DIR
 ../tests/libsbml_test.py
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
-# test that pip package installed
+# test that package installed
 echo pip list | grep libsbml
 
 echo "--------------------------------------"
