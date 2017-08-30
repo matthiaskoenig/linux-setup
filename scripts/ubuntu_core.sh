@@ -28,6 +28,8 @@ rm $HOME/examples.desktop
 
 mkdir $HOME/git
 mkdir $HOME/svn
+mkdir $HOME/Programs
+mkdir $HOME/tmp
 
 echo "*** Update & upgrade system ***"
 sudo apt-get update
