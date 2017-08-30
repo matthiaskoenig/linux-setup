@@ -46,7 +46,7 @@ installs the following components:
 * `spyder.sh` : Spyder IDE installation
 
 In addition a `ubuntu_core.sh` script is available which installs additional 
-functionality used on ubuntu LTS 16.04 (14.04). This is not required for 
+functionality used on ubuntu LTS 16.04. This is not required for 
 the libraries and the simulation environment and should not be called.
 
 ## Changelog

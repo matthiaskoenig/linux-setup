@@ -33,9 +33,6 @@ sudo apt-get update
 sudo apt-get -y upgrade
 sudo pip install --upgrade setuptools pip
 
-# echo "*** flashback ***"
-# sudo apt-get -y install compizconfig-settings-manager compiz-plugins
-
 echo "*** Install codecs ***"
 sudo apt-get -y install ubuntu-restricted-extras libxine1-ffmpeg gxine mencoder mpeg2dec vorbis-tools id3v2 mpg321 mpg123 libflac++6v5 icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 libjpeg-progs flac faac faad sox ffmpeg2theora libmpeg2-4 uudeview flac mpeg3-utils mpegdemux liba52-0.7.4-dev 
 
@@ -45,18 +42,11 @@ sudo apt-get -y install terminator
 sudo apt-get -y install htop
 sudo apt-get -y install indicator-multiload
 
-# needed for graphics drivers
-# echo "*** dh-modaliases ***"
-# sudo apt-get -y install dh-modaliases
-
 echo "*** ssh ***"
 sudo apt-get -y install openssh-server
 
 echo "*** git ***"
 sudo apt-get -y install git gitk
-git config --global user.email "konigmatt@googlemail.com"
-git config --global user.name "Matthias Koenig"
-git config --global credential.helper 'cache --timeout 24000'
 
 echo "*** svn ***"
 sudo apt-get -y install subversion
@@ -98,28 +88,15 @@ EOF0
 sudo mv java.sh /etc/profile.d/
 
 # echo "*** cmake ***"
-sudo -E apt-get -y install cmake cmake-qt-gui
+sudo apt-get -y install cmake cmake-qt-gui
 
 echo "-----------------------------------------"
 echo "Python dependencies"
 echo "-----------------------------------------"
-# general python requirements, installed via pip where possible, otherwise fallback to apt-get
-
 sudo apt-get -y install build-essential python-dev python-pip libfreetype6-dev
-sudo apt-get -y install python-tk
+sudo apt-get -y install python-tk python3-tk
 sudo -E pip install numpy scipy matplotlib ipython pandas jupyter --upgrade
-
-# sudo -E pip install networkx --upgrade
-# sudo apt-get -y install pandoc pandoc-citeproc
-# sudo -E pip install seaborn --upgrade
-# sudo -E pip install nose coverage mock --upgrade
-# sudo -E pip install sklearn --upgrade
-# sudo -E pip install palettable --upgrade
-# sudo -E pip install pyreadline --upgrade
-# sudo -E pip install pyexcel pyexcel-xlsx --upgrade
-
-# virtual environment
 sudo -E pip install virtualenv virtualenvwrapper --upgrade
-sudo -E pip install pytest pytest-cov pytest-benchmark --upgrade
+
 
 
