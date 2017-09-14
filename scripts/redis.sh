@@ -29,7 +29,7 @@ fi
 cd ${TMP_DIR}
 wget http://download.redis.io/redis-stable.tar.gz
 tar xzvf redis-stable.tar.gz
-cd redis-stable
+cd ${TMP_DIR}/redis-stable
 
 make
 make test
@@ -38,7 +38,7 @@ sudo make install
 echo "--------------------------------------"
 echo "redis configuration"
 echo "--------------------------------------"
-cd utils
+cd ${TMP_DIR}/redis-stable/utils
 
 # interactive installation
 # TODO: use default installation without need for interactions
