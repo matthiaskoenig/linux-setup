@@ -69,22 +69,22 @@ rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 # run the c++ tests
 # ctest -VV
 
-echo "--------------------------------------"
-echo "roadrunner python bindings"
-echo "--------------------------------------"
-# clean old roadrunner installs
-sudo rm -r /usr/local/lib/python2.7/dist-packages/roadrunner
-sudo rm /usr/local/lib/python2.7/dist-packages/*roadrunner*
+# echo "--------------------------------------"
+# echo "roadrunner python bindings"
+# echo "--------------------------------------"
+# # clean old roadrunner installs
+# sudo rm -r /usr/local/lib/python2.7/dist-packages/roadrunner
+# sudo rm /usr/local/lib/python2.7/dist-packages/*roadrunner*
 
 # make the python setup
-cd $ROADRUNNER_INSTALL
-sudo python setup.py install
+# cd $ROADRUNNER_INSTALL
+# sudo python setup.py install
 
-echo "--------------------------------------"
-echo "roadrunner tests"
-echo "--------------------------------------"
-cd $DIR
-../tests/roadrunner_test.py
+# echo "--------------------------------------"
+# echo "roadrunner tests"
+# echo "--------------------------------------"
+# cd $DIR
+# ../tests/roadrunner_test.py
 
 TEND=`date +%s`
 RUNTIME=$((TEND-TSTART))
