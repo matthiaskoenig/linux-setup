@@ -26,9 +26,10 @@ sudo apt-get -y update
 sudo apt-get -y install r-base-core r-base r-base-dev r-recommended
 
 # python
-sudo apt-get -y install python-dev python-pip
-sudo apt-get -y install python-tk
-sudo apt-get -y install python-pygraphviz
+sudo apt-get -y install python-dev python-pip python3-dev python3-pip
+sudo apt-get -y install python-tk python3-tk
+sudo apt-get -y install python-pygraphviz python3-pygraphviz
+
 
 sudo pip install pip --upgrade
 sudo pip install Cython --upgrade
@@ -38,19 +39,13 @@ sudo pip install matplotlib --upgrade
 sudo pip install ipython --upgrade
 sudo pip install jupyter --upgrade
 sudo pip install pandas --upgrade
-# sudo pip install sympy --upgrade
-# sudo pip install jupyter --upgrade
-# sudo pip install ipywidgets --upgrade
 
-# sudo pip install nose --upgrade
-# sudo pip install coverage --upgrade
-# sudo pip install mock --upgrade
-
-# sudo pip install networkx --upgrade
-# sudo pip install seaborn --upgrade
-# sudo pip install sklearn --upgrade
-# sudo pip install palettable --upgrade
-# sudo pip install pyreadline --upgrade
-# sudo pip install pyexcel pyexcel-xlsx --upgrade
-
+sudo pip3 install pip --upgrade
+sudo pip3 install Cython --upgrade
+sudo pip3 install numpy --upgrade
+sudo pip3 install scipy --upgrade
+sudo pip3 install matplotlib --upgrade
+sudo pip3 install ipython --upgrade
+sudo pip3 install jupyter --upgrade
+sudo pip3 install pandas --upgrade
 
