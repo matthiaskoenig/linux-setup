@@ -17,8 +17,8 @@
 #     svn update
 ############################################################
 
-PYTHON_VERSION=3.6
-if [ $PYTHON_VERSION -eq "2.7" ]
+PYTHON_VERSION="3.7"
+if [ "$PYTHON_VERSION" = "2.7" ]
 then
 	PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython${PYTHON_VERSION}.so
 else
@@ -38,7 +38,7 @@ echo "build libsbml"
 echo "--------------------------------------"
 LIBSBML_BUILD=$TMP_DIR/libsbml-experimental-$PYTHON_VERSION
 if [ -d "$LIBSBML_BUILD" ]; then
-	sudo rm -rf $LIBSBML_BUILD
+	rm -rf $LIBSBML_BUILD
 fi
 mkdir $LIBSBML_BUILD
 cd $LIBSBML_BUILD
@@ -61,4 +61,7 @@ rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 # mkvirtualenv libsbml-py36 --python=python3.6
 # (libsbml-py36) pip install .
 
+# cd ~/tmp/libsbml-experimental-3.7/src/bindings/python/out/
+# mkvirtualenv libsbml-py37 --python=python3.7
+# (libsbml-py37) pip install .
 
